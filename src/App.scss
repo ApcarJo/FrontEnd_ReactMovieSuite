@@ -1,0 +1,16 @@
+
+@import 'scss/variables.scss';
+@import 'containers/Home/Home.scss';
+@import 'containers/Login/Login.scss';
+
+.App {
+  text-align: center;
+
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
