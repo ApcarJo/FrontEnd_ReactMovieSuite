@@ -12,7 +12,7 @@ const Login = (props) => {
     // Hooks
     const [credentials,setCredentials] = useState({email:'',password:''});
     const [msgError, setMensajeError] = useState({eEmail:'',ePassword: '',eValidate:''});
-    const [statusRole, setStatusRole] = useState({roleStatus: ''});
+    // const [statusRole, setStatusRole] = useState({roleStatus: ''});
 
     // Esto es un Handler
     const updateCredentials = (e) => {
@@ -37,22 +37,22 @@ const Login = (props) => {
                     setMensajeError({...msgError, eEmail: ""});
                 }
 
-                let body = {
-                    email: credentials.email
-                }
+                // let body = {
+                //     email: credentials.email
+                // }
         
-                let role = await axios.post('http://localhost:3006/clients/email', body);
+                // let role = await axios.post('http://localhost:3006/clients/email', body);
         
-                if (role.data !== null){
-                    setStatusRole({...statusRole, roleStatus: 'client'});
-                }
+                // if (role.data !== null){
+                //     setStatusRole({...statusRole, roleStatus: 'client'});
+                // }
         
-                if (role.data == null){
-                    role = await axios.post('http://localhost:3006/dentists/email', body);
-                    if (role.data !== null) { 
-                        setStatusRole({...statusRole, roleStatus: 'dentist'});
-                    } 
-                }
+                // if (role.data == null){
+                //     role = await axios.post('http://localhost:3006/dentists/email', body);
+                //     if (role.data !== null) { 
+                //         setStatusRole({...statusRole, roleStatus: 'dentist'});
+                //     } 
+                // }
             break;
 
             case 'password':
@@ -74,9 +74,6 @@ const Login = (props) => {
         // Primero, testeamos los datos
 
         // if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(this.state.email) ) {
-     
-
-        
         try{
         // A continuamos, generamos el body de datos
         let body = {
@@ -84,8 +81,7 @@ const Login = (props) => {
             password : credentials.password
         }
         // Envío por axios
-
-        let res = await axios.post(`http://localhost:3006/login/${statusRole.roleStatus}`, body);
+        let res = await axios.post(`http://localhost:3006/login`, body);
         // let token = res.data.token;
 
         //
@@ -93,7 +89,7 @@ const Login = (props) => {
 
         // redirección
         setTimeout(()=>{
-            history.push(`/${statusRole.roleStatus}profile`);
+            history.push(`/`);
         },750);
 
         }catch{
@@ -108,38 +104,24 @@ const Login = (props) => {
                 <div className="loginCard">
 
                     <h2>L O G I N</h2>
-                    <br />
-
-                    <div className="box1">
-                        <div className="errorsText">{msgError.eEmail}</div>
-                        <form className="form1">
-                            <input className="input1" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError   ("email")} required/>
-                            <label className="lbl-nombre1">
-                              <span className="text-nomb1">Email</span>
-                            </label>
-                        </form>
+                    <div className="divRow">@ |
+                            <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")} placeholder="write your email" required/>
                     </div>
-
-                    <div className="box1">
-                        <div className="errorsText">{msgError.ePassword}</div>
-                        <form className="form3">
-                            <input className="input3" name="password"      type="password" onChange={updateCredentials} onBlur={()     =>checkError("password")}required/>
-                            <label className="lbl-nombre3">
-                              <span className="text-nomb3">Password</span>
-                            </label>
-                        </form>
-                    </div>
+                    <div className="divRow">* |
+                            <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError("password")}required/>
+                    </div>       
 
                     <div className="sendButton" onClick={()=>logeame()}>Login</div>
                     <div>{msgError.eValidate}</div>
                     {/* <div className="receiveInfo" onClick={()=>receive()}>ReceiveInfo</div> */}
                         <p>First time here?</p>
                         <div className="sendButton" onClick={() => history.push('/register')}>Sign up!</div>
-                  
                 </div>
         </div>
         
         )
 }
-
 export default connect()(Login);
+// export default connect((state)=> ({
+//     credentials: state.credentials
+// }))(Login);
