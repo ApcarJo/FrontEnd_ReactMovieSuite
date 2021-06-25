@@ -100,23 +100,23 @@ const Login = (props) => {
 
     return(
         <div className="vistaLogin">
-                {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
-                <div className="loginCard">
+            {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
+            <div className="loginCard">
+                Email
 
-                    <h2>L O G I N</h2>
-                    <div className="divRow">@ |
-                            <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")} placeholder="write your email" required/>
-                    </div>
-                    <div className="divRow">* |
-                            <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError("password")}required/>
-                    </div>       
+                        <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")} placeholder="write your email" required/>
 
+                    
+                Password
+                        <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError("password")}required/>
+
+
+                <div className="divRow">
                     <div className="sendButton" onClick={()=>logeame()}>Login</div>
                     <div>{msgError.eValidate}</div>
-                    {/* <div className="receiveInfo" onClick={()=>receive()}>ReceiveInfo</div> */}
-                        <p>First time here?</p>
-                        <div className="sendButton" onClick={() => history.push('/register')}>Sign up!</div>
+                    <div className="sendButton" onClick={() => history.push('/register')}>Signup!</div>
                 </div>
+            </div>
         </div>
         
         )

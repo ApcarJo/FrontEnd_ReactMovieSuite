@@ -1,29 +1,33 @@
 
-.vistaLogin{
-    width: 100vw;
-    height: 100vh;
+.center {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
+}
+.vistaLogin{
+    @extend .center;
+    width: 100vw;
+    height: 20em;
+    
     background-color: darkgrey;
 }
 
 .divRow {
+    width: 20em;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .loginCard {
-    display: flex;
-    align-items: center;
+    @extend .center;
     flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;
 
-    padding-top: 2em;
-    height: 36em;
-    width: 30em;
-    // background-color: $pal-pc;
+    height: 20em;
+    width: 20em;
+    background-color: $pal-pc;
 
 }
 
@@ -34,10 +38,8 @@
     cursor: pointer;
     background-color: #f1f6fd;
     transition: 0.2s;
-    margin: 0.5em;
     font-size: smaller;
     border-radius: 0.2em;
-
 
     display: flex;
     justify-content: center;
