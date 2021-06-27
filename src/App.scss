@@ -2,6 +2,9 @@
 @import 'scss/variables.scss';
 @import 'containers/Home/Home.scss';
 @import 'containers/Login/Login.scss';
+@import 'containers/Register/Register.scss';
+
+@import 'components/Calendar/Calendar.scss';
 
 .App {
   text-align: center;

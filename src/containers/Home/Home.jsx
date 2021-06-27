@@ -25,13 +25,9 @@ const Home = (props) => {
 
     const topRatedMovies = async () => {
         try{
-            console.log("hoka")
-            let res = await axios.get(`http://localhost:3006/movies` );
-            console.log(res.data.results)
+            // let res = await axios.get(`http://localhost:3006/movies` );
+            let res = await axios.get(`https://api.themoviedb.org/3/movie/300/recommendations?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=1` );
             setMovieData(res.data.results);
-
-            // console.log(movieData.movie)
-
         }catch{
             console.log("error loading")
         }

@@ -70,12 +70,9 @@ const Login = (props) => {
     }
 
     const logeame = async () => {
-
-        // Primero, testeamos los datos
-
         // if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(this.state.email) ) {
         try{
-        // A continuamos, generamos el body de datos
+        // A continuamos, generamos el body para enviar los datos por axios
         let body = {
             email : credentials.email,
             password : credentials.password
@@ -90,12 +87,11 @@ const Login = (props) => {
         // redirección
         setTimeout(()=>{
             history.push(`/`);
-        },750);
+        },250);
 
         }catch{
             setMensajeError({...msgError, eValidate: 'Wrong email or password'});
         }
-
     }
 
     return(
@@ -103,23 +99,17 @@ const Login = (props) => {
             {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
             <div className="loginCard">
                 Email
-
                         <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")} placeholder="write your email" required/>
-
-                    
                 Password
                         <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError("password")}required/>
-
-
                 <div className="divRow">
                     <div className="sendButton" onClick={()=>logeame()}>Login</div>
                     <div>{msgError.eValidate}</div>
                     <div className="sendButton" onClick={() => history.push('/register')}>Signup!</div>
                 </div>
             </div>
-        </div>
-        
-        )
+        </div>  
+    )
 }
 export default connect()(Login);
 // export default connect((state)=> ({
