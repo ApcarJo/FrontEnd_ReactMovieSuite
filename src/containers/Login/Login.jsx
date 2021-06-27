@@ -86,7 +86,7 @@ const Login = (props) => {
 
         // redirección
         setTimeout(()=>{
-            history.push(`/`);
+            history.push(`/profile`);
         },250);
 
         }catch{

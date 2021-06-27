@@ -39,10 +39,10 @@ const Register = (props) => {
 
     const applyRegister = async () => {
         // e.preventDefault();
-
+        
         let body = {
             name: datosUser.name,
-            email : datosUser.email,
+            mail : datosUser.email,
             password : datosUser.password,
 
             // {
