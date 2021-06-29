@@ -3,3 +3,10 @@ $pal-text: yellow;
 $pal-bg: white;
 $pal-pc: red;
 $pal-sc: green;
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

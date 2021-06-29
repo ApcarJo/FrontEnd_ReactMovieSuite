@@ -43,22 +43,7 @@ const Register = (props) => {
         let body = {
             name: datosUser.name,
             mail : datosUser.email,
-            password : datosUser.password,
-
-            // {
-            //     "name": "Api",
-            //     "surname1": "Api2",
-            //     "surname2": "Api3",
-            //     "dni": "114523698",
-            //     "birthdate": "1980-05-05",
-            //     "phone": "968473362",
-            //     "address": "C/ aeaedasd",
-            //     "city": "Valencia",
-            //     "postalcode": "46001",
-            //     "mail": "api@gmail.com",
-            //     "password": "1234",
-            //     "admin": true
-            //   }
+            password : datosUser.password
 
             //Crear un constructor escalable de datos de registro con variables en un array para el mensaje de errores y variables dinámicas en el nombre de la clase y el nombre del div donde se imprimen los inputs.
         }
