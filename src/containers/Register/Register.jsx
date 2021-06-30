@@ -117,9 +117,10 @@ const Register = (props) => {
     return (
         <div className="vistaRegisterCustomer">
             <div className="leftSide">
-            <pre>{JSON.stringify(datosUser, null,2)}</pre>
+            {/* <pre>{JSON.stringify(datosUser, null,2)}</pre> */}
             </div>
-            <div className="formulario1">
+            <div className="registerCard">
+                REGISTER
                 <div className="box1">
                         <input className="inputRegister" name="name" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Name" required/>
                 </div>
@@ -130,7 +131,7 @@ const Register = (props) => {
                         <input className="input" name="lastname2" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")}/>
                 </div> */}
                 <div className="box1">
-                        <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="E-mail" required/>
+                        <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" required/>
                 </div>
                 {/* <div className="box1">
                         <input className="input2" name="phone" type="text" onChange={updateFormulario} onBlur={()=>checkError("phone")}required/>
@@ -151,7 +152,7 @@ const Register = (props) => {
                 {/* <Calendar/> */}
                     {/* <input className="name" name="dateOfBirth" type="date" onChange=        {updateFormulario} onBlur={()=>checkError("dateOfBirth")}      placeholder="dateOfBirth"></  input><br></br>
                     <div>{errors.eDateofbirth}</div> */}
-                <div className="registerButton" onClick={()=>applyRegister()}>Enviar</div>
+                <div className="sendButton" onClick={()=>applyRegister()}>Enviar</div>
             </div>
         </div>
     )

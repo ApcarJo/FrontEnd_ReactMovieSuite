@@ -96,15 +96,19 @@ const Login = (props) => {
     return(
         <div className="vistaLogin">
             {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
-            <div className="loginCard">
-                Email
-                        <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")} placeholder="write your email" required/>
-                Password
-                        <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError("password")}required/>
-                <div className="divRow">
-                    <div className="sendButton" onClick={()=>logeame()}>Login</div>
-                    <div>{msgError.eValidate}</div>
-                    <div className="sendButton" onClick={() => history.push('/register')}>Signup!</div>
+            <div className="animationScript">
+                <div className="loginCard">
+                    LOGIN
+                    
+                            <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")}  placeholder="email" required/>
+                    
+                            <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError ("password")} placeholder="password" required/>
+                            <br></br>
+                    <div className="divRow">
+                        <div className="sendButton" onClick={()=>logeame()}>Sign in</div>
+                        <div>{msgError.eValidate}</div>
+                        <div className="sendButton" onClick={() => history.push('/register')}>Register now!</div>
+                    </div>
                 </div>
             </div>
         </div>  

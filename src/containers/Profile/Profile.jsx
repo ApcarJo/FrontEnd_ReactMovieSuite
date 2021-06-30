@@ -69,52 +69,47 @@ const Profile = (props) => {
     }
 
     const sendModify = () => {
-        history.push('/modify')
+        
     }
 
-if (userData!=1){
+
     return (
         // <div className="vistaProfile" onChange={setUserData}>{userData.user.map((data, index)=>{
             <div className="vistaProfile">
-                <div className="profileData" >name: {userData.name}</div>
-                <div className="profileData">surname1 : {userData.surname1}</div>
-                <div className="profileData">surname2 : {userData.surname2}</div>
-                <div className="profileData">city : {userData.city}</div>
-                <div className="profileData">postalcode : {userData.postalcode}</div>
-                <div className="profileData">phone : {userData.phone}</div>
-                <div className="profileData">e-mail : {userData.mail}</div>
+                <div className="profileCard">
+                    <p className="labelData">Name</p>
+                    <div className="profileData" >{userData.name}</div>
+                    <p className="labelData">Surname1</p>
+                    <div className="profileData">{userData.surname1}</div>
+                    <p className="labelData">Surname2</p>
+                    <div className="profileData">{userData.surname2}</div>
+                    <p className="labelData">City</p>
+                    <div className="profileData">{userData.city}</div>
+                    <p className="labelData">Postalcode</p>
+                    <div className="profileData">{userData.postalcode}</div>
+                    <p className="labelData">Phone</p>
+                    <div className="profileData">{userData.phone}</div>
+                    <p className="labelData">Email</p>
+                    <div className="profileData">{userData.mail}</div>
+                    <br></br>
+                    <button className="sendButton" onClick={sendModify}>Modify</button>
+                </div>
 
-                <button onClick={sendModify}>Modify</button>
+                <div className="profileCard">
+                    {/* <input className="modifyData" defaultValue={props.credentials.customer.name}> */}
+                    
+                    <div><p className="labelData">Name</p><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden="false"/></div>
+                    <div><p className="labelData">Surname1</p><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userData.surname1}/></ div>
+                    <div><p className="labelData">Surname2</p><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userData.surname2}/></ div>
+                    <div><p className="labelData">City</p><input className="profileData" name="city" onChange={updateUserData} defaultValue={userData.city}/></div>
+                    <div><p className="labelData">Postalcode</p><input className="profileData" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode}/></div>
+                    <div><p className="labelData">Phone</p><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone}/></div>
 
-
-
-                {/* <input className="modifyData" defaultValue={props.credentials.customer.name}> */}
-                {/* <div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden={false}/></div>
-                <div><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userData.surname1}/></ div>
-                <div><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userData.surname2}/></ div>
-                <div><input className="profileData" name="city" onChange={updateUserData} defaultValue={userData.city}/></div>
-                <div><input className="profileData" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode}/></div>
-                <div><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone}/></div>
-
-
-                <button onClick={modifyProfile}>SEND</button> */}
+                    <br></br>
+                    <button className="sendButton" onClick={modifyProfile}>SEND</button>
+                </div>
             </div>
     )
-    } else {
-        return(
-            <div>
-                <div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden={false}/></div>
-                <div><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userData.surname1}/></ div>
-                <div><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userData.surname2}/></ div>
-                <div><input className="profileData" name="city" onChange={updateUserData} defaultValue={userData.city}/></div>
-                <div><input className="profileData" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode}/></div>
-                <div><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone}/></div>
-
-
-                <button onClick={modifyProfile}>SEND</button>
-            </div>
-        )
-    }
 }
 
 export default connect((state)=>({
