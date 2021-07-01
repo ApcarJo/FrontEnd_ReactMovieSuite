@@ -20,3 +20,37 @@
 .movieCard {
     padding: 0.5em;
 }
+
+.searchMovie {
+    padding: 1em;
+    padding-bottom: 0.5em;
+    outline: none;
+    border: none;
+    height: 2em;
+    width: 16em;
+    background-color: transparent;
+    border-bottom: solid 0.1em $pal-det;
+    color: white;
+}
+
+.findMovieButton {
+    box-sizing: border-box;
+    height: 4.5em;
+    width: 4.5em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: $pal-text;
+    transition: 0.2s ease-in-out;
+    font-size: smaller;
+    border-radius: 20% 100% 100% 20%;
+
+    color: white;
+}
+
+.findMovieButton:hover {
+    transition: 0.2s ease;
+    background-color: $pal-det;
+    width: 6em;
+    border-radius: 10% 50% 50% 10%;
+}
