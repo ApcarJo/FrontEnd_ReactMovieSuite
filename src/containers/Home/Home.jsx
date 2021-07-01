@@ -15,6 +15,12 @@ const Home = (props) => {
         resultsMovieFind: {}
     })
 
+    const [rentMovie, setRentMovie] = useState({
+        movieId: '',
+        userId: props.credentials.customer.id,
+
+    })
+
     // HANDLERS
     const updateMovieData = (e) => {
         setMovieData({...movieData, [e.target.name]: e.target.value})
@@ -60,14 +66,33 @@ const Home = (props) => {
         }
     }
 
+    const orderMovie = async (move) => {
+        let newDate = new Date();
+        let token = props.credentials.token;
+        console.log(newDate)
+        let body = {
+            customerId: props.credentials.customer.id,
+            movieId: move,
+            rentStart: newDate,
+            rentEnd: newDate
+        }
+        console.log(body, "body de la order")
+        let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
+
+        console.log( res, "res de la order")
+
+    }
+
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200" 
     if (searchMovie.resultsMovieFind[0]==null) {
         
         return (
             <div className="vistaHome" >
-                <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
-                <button className="findMovieButton" onClick={findMovie}>Search</button>
+                <div className="contentSearchBar">
+                    <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
+                    <button className="findMovieButton" onClick={()=>findMovie}>Search</button>
+                </div>
                 <p>TOP RATED MOVIES</p>
                 <div className="contentMovies">
                     {movieData.resultsMovies.map((movie, index) => (
@@ -79,6 +104,7 @@ const Home = (props) => {
                                 <p> Movie: {movie.title} </p>
                                 <p> Rated : {movie.vote_average} </p>
                                 {/* <p> Id : {movie.id} </p> */}
+                                <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                             </div>
                             {/* Crear en CSS gradientes con transparencias, overflow: scroll. */}
                              {/* <p> DENTIST : {movie.genre_ids} </p> */}           
@@ -95,8 +121,10 @@ const Home = (props) => {
     } else {
         return (
             <div className="vistaHome" >
-                <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
-                <button className="findMovieButton" onClick={findMovie}>Search</button>
+                <div className="contentSearchBar">
+                    <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
+                    <button className="findMovieButton" onClick={findMovie}>Search</button>
+                </div>
 
                 <p>YOUR SEARCH RESULTS</p>
                 <div className="contentMovies">
