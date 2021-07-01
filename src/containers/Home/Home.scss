@@ -1,9 +1,22 @@
 
 .vistaHome {
-
+    // @extend .center;
+    height: 100vh;
+    width: 100vw;
+    color: white;
     background-color: $pal-main;
+}
 
-    .tarjeta {
-        color:$pal-det;
-    }
+.contentMovies {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    overflow: scroll;
+    outline: none;
+
+}
+
+.movieCard {
+    padding: 0.5em;
 }
