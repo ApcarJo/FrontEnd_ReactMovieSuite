@@ -21,7 +21,8 @@
 }
 
 .movieCard {
-    padding: 0.5em;
+    height: 26em;
+    padding: 0.2em;
 }
 
 .contentSearchBar {
@@ -43,6 +44,11 @@
 .searchMovie::placeholder{
     color: white;
     opacity: 0.8;
+}
+
+.movieData {
+    height: 6em;
+    padding: 0.5em;
 }
 
 .findMovieButton {

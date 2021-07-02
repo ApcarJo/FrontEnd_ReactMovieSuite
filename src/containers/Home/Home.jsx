@@ -8,12 +8,22 @@ const Home = (props) => {
 
     // HOOKS
     const [movieData, setMovieData] = useState({
-        resultsMovies: [],
+        listMovies: [],
+        totalPages: '',
         pageNum: '1'
     })
     const [searchMovie, setSearchMovie] = useState({
         movie: '',
-        resultsMovieFind: {}
+        findMovieList: {},
+        
+    })
+
+    const [selectGenre, setSelectGenre] = useState({
+        listMoviesGenre: [],
+        totalPagesGenre: '',
+        pageNum: '',
+        movieGenre: 'Fantasy',
+        genreTypes: []
     })
 
     const [rentMovie, setRentMovie] = useState({
@@ -30,15 +40,20 @@ const Home = (props) => {
         setSearchMovie({...searchMovie, [e.target.name]: e.target.value})
     }
 
+    const updateGenres = (e) => {
+        setSelectGenre ({...selectGenre, [e.target.name]: e.target.value})
+    }
+
     // REACT STATES
 
     useEffect(()=>{
         topRatedMovies();
+        byGenre();
 
     },[]);
 
     useEffect(()=>{
-
+        // byGenre();
     });
 
     const topRatedMovies = async () => {
@@ -46,9 +61,29 @@ const Home = (props) => {
         try{
             // let res = await axios.get(`http://localhost:3006/movies` );
             let res = await axios.get(`https://api.themoviedb.org/3/movie/300/recommendations?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=${movieData.pageNum}` );
-            setMovieData({...movieData, resultsMovies: res.data.results, totalPages: res.data?.total_pages});
+            setMovieData({...movieData, listMovies: res.data.results, totalPages: res.data?.total_pages});
             // setMovieData(res.data.results);
             // props.dispatch({type:ADD_MOVIE, payload:res.data.results});
+            
+        }catch{
+            console.log("error loading")
+        }
+    }
+
+    const byGenre = async () => {
+
+        try{
+            let listId = await axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US');
+            for (let i in listId.data.genres){
+                selectGenre.genreTypes.push(listId.data.genres[i].name)
+            }
+            let body = {
+                genre: selectGenre.movieGenre
+            }
+            console.log(selectGenre.movieGenre)
+            let res = await axios.post(`http://localhost:3006/movies/genre`, body);
+            setSelectGenre({...selectGenre, listMoviesGenre: res.data.results, totalPagesGenre: res.data?.total_pages});
+
             
         }catch{
             console.log("error loading")
@@ -62,7 +97,7 @@ const Home = (props) => {
                 title: searchMovie.movie
             }
             let res = await axios.post(`http://localhost:3006/movies/title`, body);
-            setSearchMovie({...searchMovie, resultsMovieFind: res.data.results});
+            setSearchMovie({...searchMovie, findMovieList: res.data.results});
 
         }catch {
             console.log("cargando")
@@ -79,11 +114,7 @@ const Home = (props) => {
             rentStart: newDate,
             rentEnd: newDate
         }
-        console.log(body, "body de la order")
         let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
-
-        console.log( res, "res de la order")
-
     }
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
@@ -106,9 +137,8 @@ const Home = (props) => {
         }
         topRatedMovies();
     };
-    
 
-    if (searchMovie.resultsMovieFind[0]==null) {
+    if (searchMovie.findMovieList[0]==null) {
         
         return (
             <div className="vistaHome" >
@@ -116,15 +146,17 @@ const Home = (props) => {
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>Search</button>
                 </div>
-                <p>TOP RATED MOVIES</p>
                 <div className="contentMovies">
-                    {movieData.resultsMovies.map((movie, index) => (
+                    <div name="rest" onClick={rest}>| - | : </div><div>TOP RATED MOVIES</div><div name="add" onClick={add}> : | + |</div>
+                </div>
+                <div className="contentMovies">
+                    {movieData.listMovies.map((movie, index) => (
                     <div className="movieCard">
                         <div key={index} className="movieImg">
 
                             <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             <div className="movieData">
-                                <p> Movie: {movie.title} </p>
+                                {/* <p> Movie: {movie.title} </p> */}
                                 <p> Rated : {movie.vote_average} </p>
                                 {/* <p> Id : {movie.id} </p> */}
                                 <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
@@ -135,6 +167,27 @@ const Home = (props) => {
                                <div className="buttonUpdateA" onClick={() => saveAppointment(appointment)}>UPDATE</div>
                                <div className="buttonDeleteA" onClick={() => deleteAppointment(appointment)}>REMOVE</div>
                              </div> */} 
+                        </div>
+                    </div>
+                    ))}
+                </div>
+
+                <div className="contentMovies">
+                    <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
+                </div>
+                <select className="genreSelector" name="movieGenre" onChange={updateGenres} defaultValue="Action">
+                    {selectGenre.genreTypes.map((genre, index)=> (<option key={index}>{genre}</option>))}
+                </select>
+                <div className="contentMovies">
+                    {selectGenre.listMoviesGenre.map((movie, index) => (
+                    <div className="movieCard">
+                        <div key={index} className="movieImg">
+                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                        </div>
+                        <div className="movieData">
+                            <p> Movie: {movie.title} </p>
+                            <p> Rated : {movie.vote_average} </p>
+                            <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                         </div>
                     </div>
                     ))}
@@ -151,14 +204,14 @@ const Home = (props) => {
 
                 <p>YOUR SEARCH RESULTS</p>
                 <div className="contentMovies">
-                    {searchMovie.resultsMovieFind.map((movie, index) => (
+                    {searchMovie.findMovieList.map((movie, index) => (
                         <div className="movieCard">
                             <div key={index} className="movieImg">
                                 <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             </div>
-                            <div className="movieData">
+                            {/* <div className="movieData">
                                 <p> Movie: {movie.title} </p>
-                            </div>  
+                            </div>   */}
                         </div>
                     ))}
                 </div>
@@ -166,7 +219,28 @@ const Home = (props) => {
                     <div name="rest" onClick={rest}>| - | : </div><div>TOP RATED MOVIES</div><div name="add" onClick={add}> : | + |</div>
                 </div>
                 <div className="contentMovies">
-                    {movieData.resultsMovies.map((movie, index) => (
+                    {movieData.listMovies.map((movie, index) => (
+                    <div className="movieCard">
+                        <div key={index} className="movieImg">
+                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                        </div>
+                        <div className="movieData">
+                            {/* <p> Movie: {movie.title} </p> */}
+                            <p> Rated : {movie.vote_average} </p>
+                            <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
+                        </div>
+                    </div>
+                    ))}
+                </div>
+
+                <div className="contentMovies">
+                    <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
+                </div>
+                <select className="genreSelector" name="movieGenre" onChange={updateGenres} onClick={()=>byGenre()} defaultValue="Action">
+                    {selectGenre.genreTypes.map((genre, index)=> (<option key={index}>{genre}</option>))}
+                </select>
+                <div className="contentMovies">
+                    {selectGenre.listMoviesGenre.map((movie, index) => (
                     <div className="movieCard">
                         <div key={index} className="movieImg">
                             <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
