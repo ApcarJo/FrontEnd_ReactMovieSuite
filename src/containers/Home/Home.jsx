@@ -10,6 +10,7 @@ const Home = (props) => {
     const [movieData, setMovieData] = useState({
         listMovies: [],
         totalPages: '',
+        cont: '',
         pageNum: '1'
     })
     const [searchMovie, setSearchMovie] = useState({
@@ -21,7 +22,7 @@ const Home = (props) => {
     const [selectGenre, setSelectGenre] = useState({
         listMoviesGenre: [],
         totalPagesGenre: '',
-        pageNum: '',
+        pageNum: '1',
         movieGenre: 'Fantasy',
         genreTypes: []
     })
@@ -59,6 +60,9 @@ const Home = (props) => {
     const topRatedMovies = async () => {
 
         try{
+            const onlyUnique = (value, index, self) => {
+                return self.indexOf(value) === index;
+              }
             // let res = await axios.get(`http://localhost:3006/movies` );
             let res = await axios.get(`https://api.themoviedb.org/3/movie/300/recommendations?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=${movieData.pageNum}` );
             setMovieData({...movieData, listMovies: res.data.results, totalPages: res.data?.total_pages});
@@ -78,12 +82,11 @@ const Home = (props) => {
                 selectGenre.genreTypes.push(listId.data.genres[i].name)
             }
             let body = {
-                genre: selectGenre.movieGenre
+                genre: selectGenre.movieGenre,
+                page: selectGenre.pageNum
             }
-            console.log(selectGenre.movieGenre)
             let res = await axios.post(`http://localhost:3006/movies/genre`, body);
             setSelectGenre({...selectGenre, listMoviesGenre: res.data.results, totalPagesGenre: res.data?.total_pages});
-
             
         }catch{
             console.log("error loading")
@@ -119,6 +122,7 @@ const Home = (props) => {
 
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200" 
+
     const add = () => {
         if (movieData.pageNum < movieData.totalPages) {
             movieData.pageNum++;
@@ -133,9 +137,28 @@ const Home = (props) => {
         if (movieData.pageNum > 1) {
             movieData.pageNum--;
         } else {
-          movieData.pageNum=2;
+          movieData.pageNum=movieData.totalPages;
         }
         topRatedMovies();
+    };
+
+    const add1 = () => {
+        if (selectGenre.pageNum < selectGenre.totalPagesGenre) {
+            selectGenre.pageNum++;
+        } else {
+            selectGenre.pageNum=1;
+        }
+        byGenre();
+    };
+    
+    
+    const rest1 = () => {
+        if (selectGenre.pageNum > 1) {
+            selectGenre.pageNum--;
+        } else {
+            selectGenre.pageNum=selectGenre.totalPagesGenre;
+        }
+        byGenre();
     };
 
     if (searchMovie.findMovieList[0]==null) {
@@ -146,7 +169,7 @@ const Home = (props) => {
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>Search</button>
                 </div>
-                <div className="contentMovies">
+                <div className="headerMovies">
                     <div name="rest" onClick={rest}>| - | : </div><div>TOP RATED MOVIES</div><div name="add" onClick={add}> : | + |</div>
                 </div>
                 <div className="contentMovies">
@@ -169,11 +192,11 @@ const Home = (props) => {
                              </div> */} 
                         </div>
                     </div>
-                    ))}
+                ))}
                 </div>
 
-                <div className="contentMovies">
-                    <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
+                <div className="headerMovies">
+                    <div name="rest" onClick={rest1}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add1}> : | + |</div>
                 </div>
                 <select className="genreSelector" name="movieGenre" onChange={updateGenres} onClick={()=>byGenre()} defaultValue="Action">
                     {selectGenre.genreTypes.map((genre, index)=> (<option key={index}>{genre}</option>))}
@@ -215,7 +238,7 @@ const Home = (props) => {
                         </div>
                     ))}
                 </div>
-                <div className="contentMovies">
+                <div className="headerMovies">
                     <div name="rest" onClick={rest}>| - | : </div><div>TOP RATED MOVIES</div><div name="add" onClick={add}> : | + |</div>
                 </div>
                 <div className="contentMovies">
@@ -233,7 +256,7 @@ const Home = (props) => {
                     ))}
                 </div>
 
-                <div className="contentMovies">
+                <div className="headerMovies">
                     <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
                 </div>
                 <select className="genreSelector" name="movieGenre" onChange={updateGenres} onClick={()=>byGenre()} defaultValue="Action">

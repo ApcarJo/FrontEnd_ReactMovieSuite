@@ -1,23 +1,30 @@
 
 .vistaHome {
     // @extend .center;
-    height: 100vh;
+    box-sizing: border-box;
+    height: 200vh;
     width: 100vw;
     color: white;
     background-color: $pal-main;
+    padding: 5em;
 }
 
 .contentMovies {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     padding-top: 1em;
     padding-bottom: 1em;
     
-    // overflow: hidden;
+    overflow: scroll;
     outline: none;
 
+}
+
+.headerMovies {
+    @extend .contentMovies;
+    overflow: unset;
 }
 
 .movieCard {
@@ -30,8 +37,9 @@
 }
 
 .searchMovie {
-    padding: 1em;
-    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-left: 0.5em;
+    padding-bottom: 0.1em;
     outline: none;
     border: none;
     height: 2em;
@@ -39,7 +47,7 @@
     background-color: transparent;
     border-bottom: solid 0.1em $pal-det;
     color: white;
-    // font-size: large;
+    font-size: large;
 }
 .searchMovie::placeholder{
     color: white;
@@ -71,4 +79,13 @@
     background-color: $pal-det;
     width: 6em;
     border-radius: 10% 50% 50% 10%;
+}
+
+.genreSelector {
+    outline: none;
+    border: none;
+    height: 2em;
+    width: 10em;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

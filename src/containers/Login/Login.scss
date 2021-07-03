@@ -48,12 +48,13 @@
     background-color: $pal-text;
     transition: 0.3s;
     font-size: smaller;
-    border-radius: 50% 20%;
+    border-radius: 0.5em;
 
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    margin-left: 0.5em;
 }
 
 .sendButton:hover {
