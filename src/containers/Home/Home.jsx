@@ -175,7 +175,7 @@ const Home = (props) => {
                 <div className="contentMovies">
                     <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
                 </div>
-                <select className="genreSelector" name="movieGenre" onChange={updateGenres} defaultValue="Action">
+                <select className="genreSelector" name="movieGenre" onChange={updateGenres} onClick={()=>byGenre()} defaultValue="Action">
                     {selectGenre.genreTypes.map((genre, index)=> (<option key={index}>{genre}</option>))}
                 </select>
                 <div className="contentMovies">

@@ -12,6 +12,11 @@ const Profile = (props) => {
     // HOOKS
     const [userData, setUserData] = useState({})
 
+    const [view, setView] = useState({
+        modifyView: 'modifyCard',
+        modifyViewP: 'profileCard'
+    })
+
     // HANDLERS
     const updateUserData = (e) => {
         setUserData({...userData, [e.target.name]: e.target.value})
@@ -33,8 +38,6 @@ const Profile = (props) => {
             let body = {
                 customerId: props.credentials.customer?.id,
             }
-            console.log(Array.from(props.credentials), "array from")
-
 
             let res = await axios.post(`http://localhost:3006/customer/id`, body, {headers:{'authorization':'Bearer ' + token}});
             setUserData(res?.data);
@@ -63,52 +66,83 @@ const Profile = (props) => {
 
             let res = await axios.put(`http://localhost:3006/customer/`, body, {headers:{'authorization':'Bearer ' + token}});
 
+            view.modifyView='modifyCard';
+
         }catch{
             console.log("cargando")
         }
     }
 
     const sendModify = () => {
-        
+
+        // Implemento dos interruptores
+
+        (view.modifyView=='profileCard') ? view.modifyView='modifyCard' : view.modifyView='profileCard';
+
+        (view.modifyViewP=='profileCard') ? view.modifyViewP='modifyCard' : view.modifyViewP='profileCard';
+       
+        //console.log(view.modifyView, view.modifyViewP);
+        viewProfile();
     }
 
-
     return (
-        // <div className="vistaProfile" onChange={setUserData}>{userData.user.map((data, index)=>{
+        <div className="profileMenu">
+            <div className="row">
+                <div>|-------------My personal Info-----------|</div>
+                <div>|-------------My account-----------------|</div>
+                <div>|-------------My history-----------------|</div>
+            </div>
+            
             <div className="vistaProfile">
-                <div className="profileCard">
-                    <p className="labelData">Name</p>
+                <div className={view.modifyViewP}>
+                    <div className="labelData">Name</div>
                     <div className="profileData" >{userData.name}</div>
-                    <p className="labelData">Surname1</p>
+                    <div className="labelData">Surname1</div>
                     <div className="profileData">{userData.surname1}</div>
-                    <p className="labelData">Surname2</p>
+                    <div className="labelData">Surname2</div>
                     <div className="profileData">{userData.surname2}</div>
-                    <p className="labelData">City</p>
-                    <div className="profileData">{userData.city}</div>
-                    <p className="labelData">Postalcode</p>
-                    <div className="profileData">{userData.postalcode}</div>
-                    <p className="labelData">Phone</p>
+                    <div className="row">
+                        <div className="col">
+                            <div className="labelData1">City</div>
+                            <div className="profileData1">{userData.city}</div>
+                        </div>
+                        <div className="col">
+                            <div className="labelPc">P.C.</div>
+                            <div className="profileDataPc">{userData.postalcode}</div>
+                        </div>
+                    </div>
+                    <div className="labelData">Address</div>
+                    <div className="profileData">{userData.address}</div>
+                    <div className="labelData">Phone</div>
                     <div className="profileData">{userData.phone}</div>
-                    <p className="labelData">Email</p>
+                    <div className="labelData">Email</div>
                     <div className="profileData">{userData.mail}</div>
                     <br></br>
                     <button className="sendButton" onClick={sendModify}>Modify</button>
                 </div>
-
-                <div className="profileCard">
+                <div className={view.modifyView}>
                     {/* <input className="modifyData" defaultValue={props.credentials.customer.name}> */}
-                    
-                    <div><p className="labelData">Name</p><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden="false"/></div>
-                    <div><p className="labelData">Surname1</p><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userData.surname1}/></ div>
-                    <div><p className="labelData">Surname2</p><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userData.surname2}/></ div>
-                    <div><p className="labelData">City</p><input className="profileData" name="city" onChange={updateUserData} defaultValue={userData.city}/></div>
-                    <div><p className="labelData">Postalcode</p><input className="profileData" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode}/></div>
-                    <div><p className="labelData">Phone</p><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone}/></div>
-
+                    <div className="labelData">Name</div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden="false"/>
+                    <div className="labelData">Surname1</div><input className="profileData" name="surname1" onChange={updateUserData}defaultValue={userData.surname1}/>
+                    <div className="labelData">Surname2</div><input className="profileData" name="surname2" onChange={updateUserData}defaultValue={userData.surname2}/>
+                    <div className="row">
+                        <div className="col">
+                            <div className="labelData1">City</div><input className="profileData1" name="city" onChange={updateUserData} defaultValue={userData.city}/>
+                        </div>
+                        <div className="col">
+                            <div className="labelPc">P.C.</div><input className="profileDataPc" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode}/>
+                        </div>
+                    </div>
+                    <div className="labelData">Address</div><input className="profileData" name="address" onChange={updateUserData} defaultValue={userData.address}/>
+                    <div className="labelData">Phone</div><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone}/>
                     <br></br>
-                    <button className="sendButton" onClick={modifyProfile}>SEND</button>
+                    <div className="row">
+                        <button className="sendButton" onClick={modifyProfile}>SAVE</button>
+                        <button className="sendButton" onClick={sendModify}>BACK</button>
+                    </div>
                 </div>
             </div>
+        </div>
     )
 }
 
