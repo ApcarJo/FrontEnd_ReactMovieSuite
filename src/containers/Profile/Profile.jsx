@@ -66,7 +66,7 @@ const Profile = (props) => {
 
             let res = await axios.put(`http://localhost:3006/customer/`, body, {headers:{'authorization':'Bearer ' + token}});
 
-            view.modifyView='modifyCard';
+            sendModify();
 
         }catch{
             console.log("cargando")
@@ -75,7 +75,7 @@ const Profile = (props) => {
 
     const sendModify = () => {
 
-        // Implemento dos interruptores
+        // Switch view implemented
 
         (view.modifyView=='profileCard') ? view.modifyView='modifyCard' : view.modifyView='profileCard';
 
