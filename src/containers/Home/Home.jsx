@@ -115,9 +115,9 @@ const Home = (props) => {
     }
 
     const orderMovie = async (move) => {
-        let newDate = new Date();
+
         let token = props.credentials.token;
-        console.log(newDate)
+        if (movieOrders.rentEndMovie>=movieOrders.rentStartMovie) {
         let body = {
             customerId: props.credentials.customer.id,
             movieId: move.id,
@@ -126,6 +126,9 @@ const Home = (props) => {
             rentEnd: movieOrders.rentEndMovie
         }
         let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
+        } else {
+            console.log("fecha incorrecta");
+        }
     }
 
     const findMovieById = async (value) => {
@@ -187,16 +190,17 @@ const Home = (props) => {
     let a=null;
     
     const updateRentStart = () => {
-        console.log("AHORA");
+        let actualDate = new Date();
+        if (props.calendar.date>=actualDate){
         movieOrders.rentStartMovie = props.calendar.date;
-        
+        }
     }
 
     const updateRentEnd = () => {
-        console.log("NUNCA");
         movieOrders.rentEndMovie = props.calendar.date;
-
+        
     }
+
 
 
 
@@ -219,12 +223,12 @@ const Home = (props) => {
                                 <div className="rentBox">
                                     <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie}></input>
                                         <div className="showCalendar" onClick={()=>updateRentStart()}>
-                                            <Calendar ></Calendar>
+                                            <Calendar></Calendar>
                                         </div>
                                     </div>
                                     <div className="squareCalendar" onClick={()=>updateRentEnd()}>Date End <input type="text" defaultValue={movieOrders.rentEndMovie}></input>
                                         <div className="showCalendar">
-                                            <Calendar ></Calendar>
+                                            <Calendar></Calendar>
                                         </div>
                                     </div>
                                     <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
