@@ -7,7 +7,6 @@ const Orders = (props) => {
 
     // HOOKS
     const [viewOrders, setViewOrders] = useState ({
-        movieInfo: []
     });
 
     const [movieOrders, setMovieOrders] = useState ({
@@ -32,13 +31,13 @@ const Orders = (props) => {
             let token = props.credentials?.token;
 
             let body = {
-                customerId: props.credentials.customer?.id,
+                customerId: props.credentials.customer.id,
             }
 
             let res = await axios.post(`http://localhost:3006/order/customerId`, body, {headers:{'authorization':'Bearer ' + token}});
-            setViewOrders({...viewOrders, movieInfo: res.data});
+            setViewOrders(res.data);
 
-            console.log(viewOrders.movieInfo)
+            console.log(viewOrders)
 
         }catch{
             console.log("cargando")
@@ -69,15 +68,16 @@ const Orders = (props) => {
 
     return (
         <div className="viewOrders">
-                    <div className="movieCard">
+            <div className="movieCard">
+                {viewOrders.map((movie, index)=> (
                     <div className="movieImg">
 
-                     {/* <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/> */}
+                        <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         <div className="movieData">
-                         {/* <p> Movie: {movieOrders.drawMovieOrders.title} </p> */}
-                         {/* <p> Rated : {movie.vote_average} </p> */}
-                         {/* <p> Id : {movie.id} </p> */}
-                         {/* <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button> */}
+                            <div>Client ID : {movie.customerId}</div>
+                            <div>Rent Start: {movie.rentStart}</div>
+                            <div>Rent End : {movie.rentEnd}</div>
+                            <div>Movie ID : {movie.movieId}</div>
                         </div>
                      {/* Crear en CSS gradientes con transparencias, overflow: scroll. */}
                       {/* <p> DENTIST : {movie.genre_ids} </p> */}           
@@ -86,6 +86,7 @@ const Orders = (props) => {
                         <div className="buttonDeleteA" onClick={() => deleteAppointment(appointment)}>REMOVE</div>
                       </div> */} 
                     </div>
+                     ))};
                 </div>
         </div>
     )
