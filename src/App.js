@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
+import Orders from './containers/Orders/Orders';
 import Profile from './containers/Profile/Profile';
 import Register from './containers/Register/Register';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Route path="/login" exact component={Login}/>
       <Route path="/profile" exact component={Profile}/>
       <Route path="/register" exact component={Register}/>
+      <Route path="/orders" exact component={Orders}/>
 
     </Switch>
 
