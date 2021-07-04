@@ -86,13 +86,7 @@ const Profile = (props) => {
     }
 
     return (
-        <div className="profileMenu">
-            <div className="row">
-                <div>|-------------My personal Info-----------|</div>
-                <div>|-------------My account-----------------|</div>
-                <div>|-------------My history-----------------|</div>
-            </div>
-            
+        <div className="profileMenu">        
             <div className="vistaProfile">
                 <div className={view.modifyViewP}>
                     <div className="labelData">Name</div>

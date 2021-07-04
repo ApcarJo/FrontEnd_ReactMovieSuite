@@ -2,24 +2,22 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import Calendar from '../../components/Calendar/Calendar';
 
 const Orders = (props) => {
-
+    let newDate = new Date();
     // HOOKS
-    const [viewOrders, setViewOrders] = useState ({
-    });
+    const [viewOrders, setViewOrders] = useState ([]);
 
     const [movieOrders, setMovieOrders] = useState ({
         drawMovieOrders: []
     });
 
-    // HANDLERS
-
-     // STATES
-     useEffect(()=>{
+    
+    // STATES
+    useEffect(()=>{
         findOrders();
-        findMoviesById();
-        
+        // findMoviesById();
     },[]);
 
     useEffect(()=>{
@@ -35,10 +33,8 @@ const Orders = (props) => {
             }
 
             let res = await axios.post(`http://localhost:3006/order/customerId`, body, {headers:{'authorization':'Bearer ' + token}});
-            setViewOrders(res.data);
-
-            console.log(viewOrders)
-
+            setViewOrders(res?.data);
+           
         }catch{
             console.log("cargando")
         }
@@ -57,37 +53,29 @@ const Orders = (props) => {
         }catch{
             console.log("cargando")
         }
-    } 
+    }
 
-    // viewOrders.movieInfo.map((value, index)=> {
-    //     findMoviesById(value.movieId);
-    // })
+   
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
-
-
     return (
         <div className="viewOrders">
-            <div className="movieCard">
+            <div className="contentOrders">
                 {viewOrders.map((movie, index)=> (
-                    <div className="movieImg">
+                    <div className="movieCard">
+                        <div className="movieImg">
 
-                        <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                        </div>
                         <div className="movieData">
                             <div>Client ID : {movie.customerId}</div>
                             <div>Rent Start: {movie.rentStart}</div>
                             <div>Rent End : {movie.rentEnd}</div>
                             <div>Movie ID : {movie.movieId}</div>
                         </div>
-                     {/* Crear en CSS gradientes con transparencias, overflow: scroll. */}
-                      {/* <p> DENTIST : {movie.genre_ids} </p> */}           
-                      {/* <div className="buttons1">
-                        <div className="buttonUpdateA" onClick={() => saveAppointment(appointment)}>UPDATE</div>
-                        <div className="buttonDeleteA" onClick={() => deleteAppointment(appointment)}>REMOVE</div>
-                      </div> */} 
                     </div>
-                     ))};
-                </div>
+                ))}
+            </div>  
         </div>
     )
 }

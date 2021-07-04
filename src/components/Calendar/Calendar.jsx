@@ -294,7 +294,7 @@ const Calendar = (props) => {
 			setDatosUser({...datosUser, mes: mes, anyo: anyo});
 	}
 
-	const rest = () => {
+	const rest = (mes, anyo) => {
 		if (mes > 1) {
 			mes--;
 		} else {
@@ -303,13 +303,13 @@ const Calendar = (props) => {
 		}
 		setDatosUser({...datosUser, mes: mes, anyo: anyo});
 		// setDatosUser({...datosUser, [e.target.name]: e.target.value});
-}
+	}
 
 	return (
 		<div className="vistaCalendar">
 			<div className="inputCalendar">
 				<div className="addMonth" name="mes" onClick={()=>sum(datosUser.mes, datosUser.anyo)}>+</div>
-				<div className="addMonth" name="mes" onClick={()=>rest()}>-</div>
+				<div className="addMonth" name="mes" onClick={()=>rest(datosUser.mes, datosUser.anyo)}>-</div>
 					{/* <form className="form7">
 					<select className="input7" type="number" name="mes" onChange={updateFormulario} defaultValue="6" required>
 	    	    	     {selectMonthArray.map((valor, index) => (<option>{valor}</option>))}

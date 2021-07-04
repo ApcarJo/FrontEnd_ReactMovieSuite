@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Calendar from './components/Calendar/Calendar';
+import Header from './components/Header/Header';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Orders from './containers/Orders/Orders';
@@ -14,6 +15,8 @@ function App() {
     <div className="App">
     <BrowserRouter>
 
+    <Header/>
+    
     <Switch>
 
       <Route path="/" exact component={Home}/>
@@ -22,6 +25,8 @@ function App() {
       <Route path="/register" exact component={Register}/>
       <Route path="/orders" exact component={Orders}/>
       <Route path="/calendar" exact component={Calendar}/>
+      <Route path="/header" exact component={Header}/>
+    
 
     </Switch>
 

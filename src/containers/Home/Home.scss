@@ -27,8 +27,17 @@
 }
 
 .movieCard {
-    height: 26em;
-    padding: 0.2em;
+    box-sizing: border-box;
+    height: fit-content;
+    margin: 0.5em;
+    transition: 0.3s ease;
+    &:hover{
+        // transform: scale(1.1);
+        box-sizing: border-box;
+        transition: 0.2s ease;
+        border: solid 0.2em white;
+        z-index: 99;
+    }
 }
 
 .pickMovie {
@@ -46,7 +55,7 @@
     opacity: 1;
     height: fit-content;
     width: 50em;
-    border: solid 0.5em $pal-sec;
+    border: solid 0.2em $pal-det;
     // float: left;
 }
  
@@ -121,6 +130,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .showCalendar {
@@ -160,10 +170,18 @@
 .rentButton {
     padding: 1em;
     border: none;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     background-color: $pal-text;
     &:hover{
         background-color: $pal-det;
         cursor: pointer;
     }
+}
+
+.dateInfo {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    outline: none;
+
 }

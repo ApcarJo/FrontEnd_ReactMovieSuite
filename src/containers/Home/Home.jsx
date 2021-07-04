@@ -221,12 +221,12 @@ const Home = (props) => {
                                 <div>Rated : {movieOrders.vote_average}</div>
                                 <div>Review: {movieOrders.overview}</div>
                                 <div className="rentBox">
-                                    <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie}></input>
+                                    <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie} className="dateInfo"></input>
                                         <div className="showCalendar" onClick={()=>updateRentStart()}>
                                             <Calendar></Calendar>
                                         </div>
                                     </div>
-                                    <div className="squareCalendar" onClick={()=>updateRentEnd()}>Date End <input type="text" defaultValue={movieOrders.rentEndMovie}></input>
+                                    <div className="squareCalendar" onClick={()=>updateRentEnd()}>Date End <input type="text" defaultValue={movieOrders.rentEndMovie} className="dateInfo"></input>
                                         <div className="showCalendar">
                                             <Calendar></Calendar>
                                         </div>
@@ -299,9 +299,22 @@ const Home = (props) => {
                                 <div>Title : {movieOrders.title}</div>
                                 <div>Rated : {movieOrders.vote_average}</div>
                                 <div>Review: {movieOrders.overview}</div>
-                                <div className="rentBox"> 
-                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders.id)}
-                                >Rent</button>
+                                <div className="rentBox">
+                                    <div className="col">Date Start
+                                        <div className="squareCalendar">    <input type="text" defaultValue=   {movieOrders.rentStartMovie}   className="dateInfo"></input>
+                                            <div className="showCalendar"   onClick={()=>updateRentStart()}>
+                                                <Calendar></Calendar>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col">Date End
+                                        <div className="squareCalendar"     onClick={()=>updateRentEnd()}   ><input type="text" defaultValue=  {movieOrders.rentEndMovie}    className="dateInfo"></input>
+                                            <div className="showCalendar">
+                                                <Calendar></Calendar>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
                                 </div>
                             </div>
                         </div>
