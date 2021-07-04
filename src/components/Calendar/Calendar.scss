@@ -17,13 +17,13 @@
 
 .vistaCalendar {
     // box-sizing: border-box;
-    border: solid 0.5em $pal-det;
+    border: solid 0.2em $pal-det;
     background-color: $pal-main;
     position: absolute;
     padding: 0em;
     height: fit-content;
     width: 15em;
-    border-radius: 0.5em;
+    border-radius: 0.2em;
     transition: 0.5s ease;
 }
 
@@ -69,11 +69,6 @@
     background-color: yellow; 
 }
 
-
-
-.selectMonth:after {
-
-}
 
 .inputCalendar {
     display: flex;

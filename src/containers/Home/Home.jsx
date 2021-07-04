@@ -36,7 +36,8 @@ const Home = (props) => {
 
     const [movieOrders, setMovieOrders] = useState ({
         drawMovieOrders: [],
-        visible: 'hideCalendar'
+        rentStartMovie: '',
+        rentEndMovie: ''
     });
 
     // HANDLERS
@@ -121,8 +122,8 @@ const Home = (props) => {
             customerId: props.credentials.customer.id,
             movieId: move.id,
             poster_path: move.poster_path,
-            rentStart: newDate,
-            rentEnd: newDate
+            rentStart: movieOrders.rentStartMovie,
+            rentEnd: movieOrders.rentEndMovie
         }
         let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
     }
@@ -183,6 +184,18 @@ const Home = (props) => {
         byGenre();
     };
 
+    const updateRentStart = (e) => {
+        (e!=null) ? movieOrders.rentStartMovie = props.calendar.date : console.log("none");
+        e=null;
+    }
+
+    const updateRentEnd = (e) => {
+        console.log("2")
+        movieOrders.rentEndMovie = props.calendar.date;
+    }
+
+
+
 
     if (searchMovie.findMovieList[0]==null) {
         
@@ -200,14 +213,14 @@ const Home = (props) => {
                                 <div>Rated : {movieOrders.vote_average}</div>
                                 <div>Review: {movieOrders.overview}</div>
                                 <div className="rentBox">
-                                    <div className="squareCalendar">Date Start
+                                    <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie}></input>
                                         <div className="showCalendar">
-                                            <Calendar></Calendar>
+                                            <Calendar name="start" onClick={updateRentStart("1")}></Calendar>
                                         </div>
                                     </div>
-                                    <div className="squareCalendar">Date End
+                                    <div className="squareCalendar">Date End <input type="text" defaultValue={movieOrders.rentEndMovie}></input>
                                         <div className="showCalendar">
-                                            <Calendar></Calendar>
+                                            <Calendar name="end" onClick={updateRentEnd("2")}></Calendar>
                                         </div>
                                     </div>
                                     <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
@@ -344,5 +357,6 @@ const Home = (props) => {
 
 export default connect((state)=>({
     movie: state.movie,
-    credentials: state.credentials
+    credentials: state.credentials,
+    calendar: state.calendar
 }))(Home);

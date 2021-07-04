@@ -171,6 +171,7 @@ const Calendar = (props) => {
 	let arrayMes = [" de Enero", " de Febrero", " de Marzo", " de Abril", " de Mayo", " de Junio", " de Julio", " de Agosto", " de Septiembre", " de Octubre", " de Noviembre", " de Diciembre"];
 	let arrayMes2 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		arrayDate += (arrayMes[mes-1]);
+		arrayDate += ' '+anyo;
 		
 
 		// const traductor = () => {

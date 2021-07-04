@@ -128,7 +128,7 @@
     transition: 0.2s ease;
     position: inherit;
     height: fit-content;
-    transform: translateX(2000em);
+    transform: translateX(-14em);
 }
 
 .squareCalendar {
@@ -144,7 +144,6 @@
             .showCalendar {
             opacity: 1;
             transition: 0.2s ease;
-            transform: translateX(-10em);
             }
     }
 }
