@@ -33,6 +33,10 @@ const Home = (props) => {
 
     })
 
+    const [movieOrders, setMovieOrders] = useState ({
+        drawMovieOrders: []
+    });
+
     // HANDLERS
     const updateMovieData = (e) => {
         setMovieData({...movieData, [e.target.name]: e.target.value})
@@ -120,6 +124,21 @@ const Home = (props) => {
         let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
     }
 
+    const findMovieById = async (value) => {
+        try {
+            let body = {
+                id: value.id
+            }
+
+            let res = await axios.post(`http://localhost:3006/movies/id`, body);
+            setMovieOrders(res?.data);
+
+            // movieOrders.drawMovieOrders.push(res?.data)      
+        }catch{
+            console.log("cargando")
+        }
+    } 
+
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200" 
 
@@ -169,6 +188,20 @@ const Home = (props) => {
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>Search</button>
                 </div>
+                    <div className="pickMovie">
+                        <div className="row">
+                            <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
+                            <div className="col">
+                                <div>Title : {movieOrders.title}</div>
+                                <div>Rated : {movieOrders.vote_average}</div>
+                                <div>Review: {movieOrders.overview}</div>
+                                <div className="rentBox"> 
+                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders.id)}
+                                >Rent</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <div className="headerMovies">
                     <div name="rest" onClick={rest}>| - | : </div><div>TOP RATED MOVIES</div><div name="add" onClick={add}> : | + |</div>
                 </div>
@@ -177,12 +210,12 @@ const Home = (props) => {
                     <div className="movieCard">
                         <div key={index} className="movieImg">
 
-                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            
                             <div className="movieData">
                                 {/* <p> Movie: {movie.title} </p> */}
                                 <p> Rated : {movie.vote_average} </p>
                                 {/* <p> Id : {movie.id} </p> */}
-                                <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                             </div>
                             {/* Crear en CSS gradientes con transparencias, overflow: scroll. */}
                              {/* <p> DENTIST : {movie.genre_ids} </p> */}           
@@ -205,12 +238,11 @@ const Home = (props) => {
                     {selectGenre.listMoviesGenre.map((movie, index) => (
                     <div className="movieCard">
                         <div key={index} className="movieImg">
-                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         </div>
                         <div className="movieData">
                             <p> Movie: {movie.title} </p>
                             <p> Rated : {movie.vote_average} </p>
-                            <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                         </div>
                     </div>
                     ))}
@@ -220,17 +252,32 @@ const Home = (props) => {
     } else {
         return (
             <div className="vistaHome" >
+                    
                 <div className="contentSearchBar">
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>Search</button>
                 </div>
+                    <div className="pickMovie">
+                        <div className="row">
+                            <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
+                            <div className="col">
+                                <div>Title : {movieOrders.title}</div>
+                                <div>Rated : {movieOrders.vote_average}</div>
+                                <div>Review: {movieOrders.overview}</div>
+                                <div className="rentBox"> 
+                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders.id)}
+                                >Rent</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <p>YOUR SEARCH RESULTS</p>
                 <div className="contentMovies">
                     {searchMovie.findMovieList.map((movie, index) => (
                         <div className="movieCard">
                             <div key={index} className="movieImg">
-                                <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                                <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             </div>
                             {/* <div className="movieData">
                                 <p> Movie: {movie.title} </p>
@@ -245,12 +292,11 @@ const Home = (props) => {
                     {movieData.listMovies.map((movie, index) => (
                     <div className="movieCard">
                         <div key={index} className="movieImg">
-                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         </div>
                         <div className="movieData">
                             {/* <p> Movie: {movie.title} </p> */}
                             <p> Rated : {movie.vote_average} </p>
-                            <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                         </div>
                     </div>
                     ))}
@@ -266,7 +312,7 @@ const Home = (props) => {
                     {selectGenre.listMoviesGenre.map((movie, index) => (
                     <div className="movieCard">
                         <div key={index} className="movieImg">
-                            <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
+                            <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         </div>
                         <div className="movieData">
                             <p> Movie: {movie.title} </p>

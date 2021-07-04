@@ -1,6 +1,5 @@
 
 .vistaHome {
-    // @extend .center;
     box-sizing: border-box;
     height: 200vh;
     width: 100vw;
@@ -32,8 +31,30 @@
     padding: 0.2em;
 }
 
+.pickMovie {
+    display: flex;
+    box-sizing: border-box;
+    transform: translateX(20em);
+    transform: translateY(-10em);
+    transition: 0.5s ease;
+    padding: 1em;
+    // transform: translateY(-30em);
+    z-index: 99;
+    position: fixed;
+    
+    background-color: $pal-main;
+    opacity: 1;
+    height: fit-content;
+    width: 50em;
+    border: solid 0.5em $pal-sec;
+    // float: left;
+}
+ 
+
+
 .contentSearchBar {
     padding: 1.5em;
+    height: 15em;
 }
 
 .searchMovie {
@@ -88,4 +109,24 @@
     width: 10em;
     font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.rentBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 10em;
+    background-color: black;
+    border-radius: 0.5em;
+    padding-top: 2em;
+}
+.rentButton {
+    padding: 1em;
+    border: none;
+    border-radius: 0.5em;
+    &:hover{
+        background-color: $pal-det;
+        cursor: pointer;
+
+    }
 }
