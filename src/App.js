@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
+import Calendar from './components/Calendar/Calendar';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Orders from './containers/Orders/Orders';
@@ -20,6 +21,7 @@ function App() {
       <Route path="/profile" exact component={Profile}/>
       <Route path="/register" exact component={Register}/>
       <Route path="/orders" exact component={Orders}/>
+      <Route path="/calendar" exact component={Calendar}/>
 
     </Switch>
 

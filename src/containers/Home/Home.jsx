@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { ADD_MOVIE } from '../../redux/reducers/movie-reducer';
+import Calendar from '../../components/Calendar/Calendar.jsx'
 
 const Home = (props) => {
 
@@ -34,7 +35,8 @@ const Home = (props) => {
     })
 
     const [movieOrders, setMovieOrders] = useState ({
-        drawMovieOrders: []
+        drawMovieOrders: [],
+        visible: 'hideCalendar'
     });
 
     // HANDLERS
@@ -58,7 +60,7 @@ const Home = (props) => {
     },[]);
 
     useEffect(()=>{
-        // byGenre();
+        
     });
 
     const topRatedMovies = async () => {
@@ -117,7 +119,8 @@ const Home = (props) => {
         console.log(newDate)
         let body = {
             customerId: props.credentials.customer.id,
-            movieId: move,
+            movieId: move.id,
+            poster_path: move.poster_path,
             rentStart: newDate,
             rentEnd: newDate
         }
@@ -180,6 +183,7 @@ const Home = (props) => {
         byGenre();
     };
 
+
     if (searchMovie.findMovieList[0]==null) {
         
         return (
@@ -195,9 +199,18 @@ const Home = (props) => {
                                 <div>Title : {movieOrders.title}</div>
                                 <div>Rated : {movieOrders.vote_average}</div>
                                 <div>Review: {movieOrders.overview}</div>
-                                <div className="rentBox"> 
-                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders.id)}
-                                >Rent</button>
+                                <div className="rentBox">
+                                    <div className="squareCalendar">Date Start
+                                        <div className="showCalendar">
+                                            <Calendar></Calendar>
+                                        </div>
+                                    </div>
+                                    <div className="squareCalendar">Date End
+                                        <div className="showCalendar">
+                                            <Calendar></Calendar>
+                                        </div>
+                                    </div>
+                                    <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
                                 </div>
                             </div>
                         </div>
@@ -210,6 +223,7 @@ const Home = (props) => {
                     <div className="movieCard">
                         <div key={index} className="movieImg">
 
+                            {/* <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/> */}
                             <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             
                             <div className="movieData">

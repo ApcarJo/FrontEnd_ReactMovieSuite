@@ -117,20 +117,20 @@ const Calendar = (props) => {
 
 	let a;
 
-	const calendarConsole = () => {
-		for (i=1; i<=mesi[mes-1]; i++)
-		{
-			if (dia===i)
-				console.log(i+'*');
+	// const calendarConsole = () => {
+	// 	for (i=1; i<=mesi[mes-1]; i++)
+	// 	{
+	// 		if (dia===i)
+	// 			console.log(i+'*');
 
-			if (dia!==i)
-				console.log(i);
+	// 		if (dia!==i)
+	// 			console.log(i);
 
-			if (a%7===0)
-				console.log(" ");
-			a++;
-		}
-	}
+	// 		if (a%7===0)
+	// 			console.log(" ");
+	// 		a++;
+	// 	}
+	// }
 
 	// let calendarConsole2 = calendarConsole();
 
@@ -186,51 +186,51 @@ const Calendar = (props) => {
 
 
 	// DRAW IN ROME NUMBERS THE YEAR
-	const cifra = (num, c1, c2, c3) => {
-		let j, romanoNum = [];
+	// const cifra = (num, c1, c2, c3) => {
+	// 	let j, romanoNum = [];
 	
-		if (num === 9) {
-			romanoNum+=(c1, c3);
-			console.log(c1, c3);
-		} else if (num > 4){
-			romanoNum+=(c2);
-			console.log(c2);
+	// 	if (num === 9) {
+	// 		romanoNum+=(c1, c3);
+	// 		console.log(c1, c3);
+	// 	} else if (num > 4){
+	// 		romanoNum+=(c2);
+	// 		console.log(c2);
 
-			for(j=1; j<=num-5; j++) {
-				romanoNum+=(c1);
-				console.log(c1);
-			}
+	// 		for(j=1; j<=num-5; j++) {
+	// 			romanoNum+=(c1);
+	// 			console.log(c1);
+	// 		}
 
-		} else if (num === 4) {
-			romanoNum+=(c1, c2);
-			console.log(c1, c2);
-		} else {
-			for(j=1; j<=num; j++){
-				romanoNum+=(c1);
-				console.log(c1);
-			}
-		}
-		return romanoNum;
-	}
+	// 	} else if (num === 4) {
+	// 		romanoNum+=(c1, c2);
+	// 		console.log(c1, c2);
+	// 	} else {
+	// 		for(j=1; j<=num; j++){
+	// 			romanoNum+=(c1);
+	// 			console.log(c1);
+	// 		}
+	// 	}
+	// 	return romanoNum;
+	// }
 	
-	const romano = (num) => {
+	// const romano = (num) => {
 
-		// Separar cada cifra del numero introducido
-		let mil=num/1000;
-		let cen=(num%1000)/100;
-		let dec=(num%100)/10;
-		let uni=num%10;
-		let romanoNum2 =[]
-		// Hacer una llamada a la funcion por cada cifra del numero
-		romanoNum2.push(cifra(mil, 'M', '', ''));
-		romanoNum2.push(cifra(cen, 'C', 'D', 'M'));
-		romanoNum2.push(cifra(dec, 'X', 'L', 'C'));
-		romanoNum2.push(cifra(uni, 'I', 'V', 'X'));
+	// 	// Separar cada cifra del numero introducido
+	// 	let mil=num/1000;
+	// 	let cen=(num%1000)/100;
+	// 	let dec=(num%100)/10;
+	// 	let uni=num%10;
+	// 	let romanoNum2 =[]
+	// 	// Hacer una llamada a la funcion por cada cifra del numero
+	// 	romanoNum2.push(cifra(mil, 'M', '', ''));
+	// 	romanoNum2.push(cifra(cen, 'C', 'D', 'M'));
+	// 	romanoNum2.push(cifra(dec, 'X', 'L', 'C'));
+	// 	romanoNum2.push(cifra(uni, 'I', 'V', 'X'));
 		
-		console.log(romanoNum2);
-	}
+	// 	console.log(romanoNum2);
+	// }
 
-	let romanoNum = romano(anyo);
+	// let romanoNum = romano(anyo);
 
 	const selectMonthArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -241,17 +241,17 @@ const Calendar = (props) => {
 
 	const initiateDate = () => {
 		const actualDate = {
-			// year: newDate.getFullYear(),
-			// monthy: newDate.getMonth()+1,
-			// day: newDate.getDate(),
-			year: anyo,
-			day: dia,
-			monthy: mes,
+			year: newDate.getFullYear(),
+			monthy: newDate.getMonth()+1,
+			day: newDate.getDate(),
+			// year: anyo,
+			// day: dia,
+			// monthy: mes,
 			semana: semana2,
 			diasMes: diasMes
 		}
 	// Guardo en Hooks
-	setDatosUser({...datosUser, actualDate: actualDate});
+	setDatosUser({...datosUser, dia: day, mes: monthy, anyo: year});
 	// Guardo en RDX
 	props.dispatch({type:DATE_CAL, payload:actualDate});
 	}
@@ -283,14 +283,33 @@ const Calendar = (props) => {
 		}
 	}
 	
+	const sum = (mes, anyo) => {
+			if (mes < 12) {
+				mes++;
+			} else {
+				anyo++;
+				mes=1;
+			}
+			setDatosUser({...datosUser, mes: mes, anyo: anyo});
+	}
+
+	const rest = () => {
+		if (mes > 1) {
+			mes--;
+		} else {
+			anyo--;
+			mes=12;
+		}
+		setDatosUser({...datosUser, mes: mes, anyo: anyo});
+		// setDatosUser({...datosUser, [e.target.name]: e.target.value});
+}
 
 	return (
 		<div className="vistaCalendar">
 			<div className="inputCalendar">
-
-					<form className="form7">
-					{/* <select className="input7" type="number" name="mesW" onChange={updateFormulario} required>
-	    	    	     {arrayMes2.map((valor, index) => (<option>{valor}</option>))} */}
+				<div className="addMonth" name="mes" onClick={()=>sum(datosUser.mes, datosUser.anyo)}>+</div>
+				<div className="addMonth" name="mes" onClick={()=>rest()}>-</div>
+					{/* <form className="form7">
 					<select className="input7" type="number" name="mes" onChange={updateFormulario} defaultValue="6" required>
 	    	    	     {selectMonthArray.map((valor, index) => (<option>{valor}</option>))}
 
@@ -298,16 +317,17 @@ const Calendar = (props) => {
 	            	    <label className="lbl-nombre7">
 	            	        <span className="text-nomb7">Month</span>
 	            	    </label>
-	            	</form>
+	            	</form> */}
 
-				<div>{errors.eAnyo}</div> 
+				{/* <div>{errors.eAnyo}</div> 
 
 					<form className="form8">
 						<input type='text' className='input8' name='anyo' onChange={updateFormulario} defaultValue="2021" required></input>
 	            	        <label className="lbl-nombre8">
 	            	            <span className="text-nomb8">Year</span>
 	            	        </label>
-	            	</form>
+	            	</form> */}
+				{/* <input type="date"></input> */}
 
 				<br></br><br></br><br></br>
 				<div type='text' className="writeDate" name='writeDate'> {arrayDate}</div><br></br>

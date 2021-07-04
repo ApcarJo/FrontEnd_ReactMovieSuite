@@ -35,7 +35,7 @@
     display: flex;
     box-sizing: border-box;
     transform: translateX(20em);
-    transform: translateY(-10em);
+    transform: translateY(-20em);
     transition: 0.5s ease;
     padding: 1em;
     // transform: translateY(-30em);
@@ -53,6 +53,9 @@
 
 
 .contentSearchBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     padding: 1.5em;
     height: 15em;
 }
@@ -109,14 +112,49 @@
     width: 10em;
     font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: transparent;
+    border-bottom: solid 0.1em $pal-det;
+    color: black;
 }
+
+.rentBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showCalendar {
+    opacity: 0;
+    transition: 0.2s ease;
+    position: inherit;
+    height: fit-content;
+    transform: translateX(2000em);
+}
+
+.squareCalendar {
+    display: flex;
+    background-color: red;
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    &:hover{
+            .showCalendar {
+            opacity: 1;
+            transition: 0.2s ease;
+            transform: translateX(-10em);
+            }
+    }
+}
+
 
 .rentBox {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    height: 10em;
-    background-color: black;
+    height: fit-content;
     border-radius: 0.5em;
     padding-top: 2em;
 }
@@ -124,9 +162,9 @@
     padding: 1em;
     border: none;
     border-radius: 0.5em;
+    background-color: $pal-text;
     &:hover{
         background-color: $pal-det;
         cursor: pointer;
-
     }
 }
