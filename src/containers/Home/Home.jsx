@@ -183,15 +183,19 @@ const Home = (props) => {
         }
         byGenre();
     };
-
-    const updateRentStart = (e) => {
-        (e!=null) ? movieOrders.rentStartMovie = props.calendar.date : console.log("none");
-        e=null;
+    let e=null;
+    let a=null;
+    
+    const updateRentStart = () => {
+        console.log("AHORA");
+        movieOrders.rentStartMovie = props.calendar.date;
+        
     }
 
-    const updateRentEnd = (e) => {
-        console.log("2")
+    const updateRentEnd = () => {
+        console.log("NUNCA");
         movieOrders.rentEndMovie = props.calendar.date;
+
     }
 
 
@@ -214,13 +218,13 @@ const Home = (props) => {
                                 <div>Review: {movieOrders.overview}</div>
                                 <div className="rentBox">
                                     <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie}></input>
-                                        <div className="showCalendar">
-                                            <Calendar name="start" onClick={updateRentStart("1")}></Calendar>
+                                        <div className="showCalendar" onClick={()=>updateRentStart()}>
+                                            <Calendar ></Calendar>
                                         </div>
                                     </div>
-                                    <div className="squareCalendar">Date End <input type="text" defaultValue={movieOrders.rentEndMovie}></input>
+                                    <div className="squareCalendar" onClick={()=>updateRentEnd()}>Date End <input type="text" defaultValue={movieOrders.rentEndMovie}></input>
                                         <div className="showCalendar">
-                                            <Calendar name="end" onClick={updateRentEnd("2")}></Calendar>
+                                            <Calendar ></Calendar>
                                         </div>
                                     </div>
                                     <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
