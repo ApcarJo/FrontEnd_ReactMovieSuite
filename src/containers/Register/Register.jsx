@@ -3,9 +3,12 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Calendar from '../../components/Calendar/Calendar';
+import { useHistory } from 'react-router-dom';
 
 
 const Register = (props) => {
+
+    let history = useHistory();
 
     // Hook
     const [datosUser,setDatosUser] = useState(
@@ -43,22 +46,7 @@ const Register = (props) => {
         let body = {
             name: datosUser.name,
             mail : datosUser.email,
-            password : datosUser.password,
-
-            // {
-            //     "name": "Api",
-            //     "surname1": "Api2",
-            //     "surname2": "Api3",
-            //     "dni": "114523698",
-            //     "birthdate": "1980-05-05",
-            //     "phone": "968473362",
-            //     "address": "C/ aeaedasd",
-            //     "city": "Valencia",
-            //     "postalcode": "46001",
-            //     "mail": "api@gmail.com",
-            //     "password": "1234",
-            //     "admin": true
-            //   }
+            password : datosUser.password
 
             //Crear un constructor escalable de datos de registro con variables en un array para el mensaje de errores y variables dinámicas en el nombre de la clase y el nombre del div donde se imprimen los inputs.
         }
@@ -66,6 +54,11 @@ const Register = (props) => {
 
         let res = await axios.post('http://localhost:3006/customer', body);
         console.log(res);
+
+        setTimeout(()=>{
+            history.push(`/profile`);
+        },750);
+
     }
 
     const checkError = (arg) => {
@@ -117,27 +110,18 @@ const Register = (props) => {
                 break;
         }
     }
-     const errorStyle = (arg) =>{
-        
-        let errorDefault = "name";
-        let errorWarning = "red";
-
-        if (errors.eName!== ''){
-            return errorWarning;
-        }
-
-        return errorDefault;
-     }
 
     return (
         <div className="vistaRegisterCustomer">
             <div className="leftSide">
-            <pre>{JSON.stringify(datosUser, null,2)}</pre>
+            {/* <pre>{JSON.stringify(datosUser, null,2)}</pre> */}
             </div>
-            <div className="formulario1">
+            <div className="registerCard">
+                REGISTER
                 <div className="box1">
                         <input className="inputRegister" name="name" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Name" required/>
                 </div>
+                <div className="errorsText">{errors.eName}</div>
                 {/*<div className="box1">
                         <input className="input" name="lastname1" type="text" onChange={updateFormulario} onBlur={()=>checkError("lastname")} required/>
                 </div>
@@ -145,17 +129,20 @@ const Register = (props) => {
                         <input className="input" name="lastname2" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")}/>
                 </div> */}
                 <div className="box1">
-                        <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="E-mail" required/>
+                        <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" required/>
                 </div>
+                <div className="errorsText">{errors.eEmail}</div>
                 {/* <div className="box1">
                         <input className="input2" name="phone" type="text" onChange={updateFormulario} onBlur={()=>checkError("phone")}required/>
                 </div> */}
                 <div className="box1">
                         <input className="inputRegister" name="password" type="password" onChange={updateFormulario} onBlur={()=>checkError("password")} placeholder="Password" required/>
                 </div>
+                <div className="errorsText">{errors.ePassword}</div>
                 <div className="box1">
                         <input className="inputRegister" name="password2" type="password" onChange={updateFormulario} onBlur={()=>checkError("password2")} placeholder="Repeat Password" required/>
                 </div>
+                <div className="errorsText">{errors.ePassword2}</div>
                 {/* <div className="box1">
                             <input className="input5" name="city" type="text" onChange={updateFormulario} onBlur={()=>checkError("city")}required/>
                 </div>  
@@ -166,7 +153,7 @@ const Register = (props) => {
                 {/* <Calendar/> */}
                     {/* <input className="name" name="dateOfBirth" type="date" onChange=        {updateFormulario} onBlur={()=>checkError("dateOfBirth")}      placeholder="dateOfBirth"></  input><br></br>
                     <div>{errors.eDateofbirth}</div> */}
-                <div className="registerButton" onClick={()=>applyRegister()}>Enviar</div>
+                <div className="sendButton" onClick={()=>applyRegister()}>Enviar</div>
             </div>
         </div>
     )

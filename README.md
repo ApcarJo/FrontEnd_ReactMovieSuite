@@ -1,70 +1,115 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a name="top"></a>
 
-## Available Scripts
+<h1 align="center">
+  <br> Old Fashion Film blockbuster Javascript 
+</h1>
 
-In the project directory, you can run:
+---
+
+- [About](#about)   
+
+- [Instructions](#instructions)
+
+- [Screenshots](#images)
+
+- [Tools](#tools)
+
+- [Developers](#developers)
+
+---
+<a name="about"></a>
+## About :speech_balloon:
+
+Challenge from the Fullstack Developer Bootcamp at <a href="https://geekshubsacademy.com/">GeeksHubs Academy</a> where we I have to develop a Javascript Full Stack web application as a fake retro Netflix.
+
+
+This Project has been done by [José Luis Aparicio](https://github.com/ApcarJo).
+
+Starting date: June 28th 2021. <br>
+Due date: July 5th 2021.
+
+I have used the Trello in order to organize tasks.
+
+<a name="instructions"></a> 
+## Instructions :clipboard: 
+
+The first step is to clone the repository and install the project dependencies.
+
+### `npm i`
+
+Run the server.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+On the other side, you will need to clone the backend from [this repository](https://github.com/ApcarJo/BackEnd_ReactMovieSuite) and follow its instructions to run it.
 
-### `npm test`
+Register as a client to use the web app.
+Use: admin@gmail.com * 123456 to access admin role.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a name="images"></a>
+## Screenshots 📸
 
-### `npm run build`
+Home
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="src/img/screenshots/home.png" width="1000">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Login
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="src/img/screenshots/login.png" width="1000">
 
-### `npm run eject`
+Client profile with our OWN CODE for a INFINITE LOOP SLIDER.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="src/img/screenshots/clientProfile.png" width="1000">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create new appointment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="src/img/screenshots/createAppointment.png" width="1000">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+As a dentist, check your dynamic schedule that updates all the info and shows in real time the appointments of each month, this is not a library, is pure javascript react redux code.
 
-## Learn More
+<img src="src/img/screenshots/schedule_datepicker.jpg" width="1000">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This is our DATEPICKER PURE JAVASCRIPT CODE created for the project. It's a component that uses redux to send the data to each container where is used (clientregister.jsx, dentistregister.jsx, and dentistprofile.jsx container views). It can show the months by name, write the year in roman numerals, and some other calculations related to the date, this options are in the code but not activated for the project. Part of the code is used to create the dynamic schedule draw in dentist profile.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="src/img/screenshots/purecode_datepicker.PNG" width="1000">
 
-### Code Splitting
+Update your profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src="src/img/screenshots/updateDentist.PNG" width="1000">
 
-### Analyzing the Bundle Size
+Check your appointments history
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="src/img/screenshots/HistoryApp.PNG" width="1000">
 
-### Making a Progressive Web App
+Register with our new bran datepicker and our smooth MODERN CSS ANIMATION for the inputs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="src/img/screenshots/registerClient.PNG" width="1000">
 
-### Advanced Configuration
+<a name="tools"></a>
+## Tools 🔧
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<img src="src/img/javascript.png" width="50"> <img src="src/img/html5.png" width="50"> <img src="src/img/css3.png" width="50"> <img src="src/img/react.png" width="50"> <img src="src/img/redux.png" width="55"> <img src="src/img/node.png" width="65"> <img src="src/img/trello.png" width="60">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Installed dependencies: Redux, React-redux, Redux-localstorage-simple, Nodemon, React-Router-Dom & Axios.
 
-### `npm run build` fails to minify
+<a name="developers"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Developers ✍️
+
+[José Luis Aparicio](https://github.com/ApcarJo) 
+
+
+
+---
+
+Thanks to all our classmates for the help and work as a great team.
+
+Things runned out of time to implement:
+
+
+
+[🔝](#top)

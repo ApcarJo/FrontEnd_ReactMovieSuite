@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: solid 0.5em #2ecece;
+    // border: solid 0.5em #2ecece;
     
     padding: 0.4em;
     border-radius: 0.2em;
@@ -16,14 +16,15 @@
 }
 
 .vistaCalendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 20em;
-    width: 20em;
-
+    // box-sizing: border-box;
+    border: solid 0.2em $pal-det;
+    background-color: $pal-main;
+    position: absolute;
+    padding: 0em;
+    height: fit-content;
+    width: 15em;
+    border-radius: 0.2em;
+    transition: 0.5s ease;
 }
 
 .writeDate {
@@ -41,7 +42,7 @@
     box-sizing: border-box;
     overflow: hidden;
 
-    border-bottom: solid 0.05em #2ecece;
+    border-bottom: solid 0.05em $pal-text;
     background-color: none;
     font-size: small;
     border-radius: 0.2em;
@@ -68,11 +69,6 @@
     background-color: yellow; 
 }
 
-
-
-.selectMonth:after {
-
-}
 
 .inputCalendar {
     display: flex;

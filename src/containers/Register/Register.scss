@@ -3,27 +3,37 @@
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 55em;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+
+    background-color: $pal-main;
 
     /* background-color: red; */
 }
 
-.formulario1{
+.registerCard{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     box-sizing: border-box;
-    height: 55em;
-    width: 35em;
-    border-radius: 0.1em;
-    background-color: #dfeaf7;
+    height: 25em;
+    width: 25em;
+    border-radius: 50% 20%;
+    background-color: $pal-main;
+    border-radius: 50% 20% ;
+    padding: 1em;
+    box-shadow: -0.1em 0.1em 0em 0.02em $pal-det, -0.1em 0.1em 0.2em 0.02em $pal-det;
+    border-bottom: solid 1em $pal-sec;
+    border-top: solid 0.1em $pal-sec;
+    border-width: 0.2em 0.1em;
 
     box-sizing: border-box;
-    padding-top: 1em;
+
 }
 
 .errorsText {
@@ -36,17 +46,22 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    padding: 0.8em;
 }
 
 .inputRegister {
     border: none;
-    padding: 0.8em;
+    padding: 1em;
+    width: 16em;
+    height: 1em;
+    padding-bottom: 0.5em;
     outline: none;
     border-bottom: transparent;
+    background-color: transparent;
+    border-bottom: solid 0.1em $pal-text;
+    color: $pal-det;
+    font-size: 0.8em;
 }
-
-
-
 
 .botonCuco:hover{
     background-color: lightpink;

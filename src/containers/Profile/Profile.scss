@@ -1,0 +1,103 @@
+
+.vistaProfile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 100vw;
+    background-color: $pal-main;
+    color: white;
+}
+
+.profileMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+
+    color: $pal-det;
+    height: 35em;
+    width: 30em;
+    border-radius: 20% 20% ;
+    padding: 1em;
+    box-shadow: -0.1em 0.1em 0em 0.02em $pal-det, -0.1em 0.1em 0.2em 0.02em $pal-det;
+    border-bottom: solid 1em $pal-sec;
+    border-top: solid 0.1em $pal-sec;
+    border-width: 0.2em 0.1em;
+}
+
+.modifyCard {
+    @extend .profileCard;
+    display: none;
+}
+
+.profileData {
+    all:unset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    background-color: transparent;
+    color: white;
+    border: none;
+    border: $pal-text 0.1em solid;
+    padding: 0.5em;
+    padding-top: 0.4em;
+    padding-bottom: 0.2em;
+    outline: none;
+    width: 16em;
+    height: 2em;
+    border-radius: 0.2em;
+    border-width: 0.1em 0.15em;
+
+}
+
+.labelData {
+    width: 16em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 0.5em;
+}
+
+.profileData1 {
+    @extend .profileData;
+    width: 12em;
+}
+
+.profileDataPc {
+    @extend .profileData;
+    width: 4em;
+}
+
+.labelData1 {
+    @extend .labelData;
+    width: 12em;
+    // padding-left: 0.7em;
+}
+
+.labelPc {
+    @extend .labelData;
+    width: 4em;
+    // padding-left: 0.5em;
+}
+
