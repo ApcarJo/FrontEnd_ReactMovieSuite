@@ -112,11 +112,19 @@ Installed dependencies: Redux, React-redux, Redux-localstorage-simple, Nodemon, 
 Thanks to all our classmates for the help and work as a great team.
 
 Things runned out of time to implement:
-- better design of the content scroll
-- gradient on scroll
-- price and costs calculation of the rents
-- error when register allow you to create an account without a match with repeat password
-- responsive design
+- Better design of the content scroll
+- Gradient on scroll
+- Price and costs calculation of the rents
+- Error when register allow you to create an account without a match with repeat password
+- Responsive design
+- Movies by actor, I have failed the endpoint, only actor info with some "known for" movies, so I removed of the search option.
+- To be able to hide the "movie card rent" when you see homescreen first time
+- Heroku deployment
+
+Things I am proud of
+- The modify system
+- The show and hide of the datePicker when you are going to rent a movie
+- The functionality of the movies content carrousel where you can navigate all the pages the moviedatabase api can offer
 
 
 [🔝](#top)
