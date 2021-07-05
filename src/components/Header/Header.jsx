@@ -62,8 +62,6 @@ const Header = (props) => {
 
                 <div className="headerLinks">
                     <Button path="/" destination="HOME"/>
-                    <Button path="/orders" destination="ORDERS"/>
-                    <Button path="/profile" destination="PROFILE"/>
                 </div>
     
                 <div className="headerUser">
