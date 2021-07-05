@@ -128,8 +128,9 @@
     width: 10em;
     font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: transparent;
+    background-color: white;
     border-bottom: solid 0.1em $pal-det;
+    border-radius: 0.2em;
     color: black;
 }
 

@@ -26,10 +26,10 @@ Challenge from the Fullstack Developer Bootcamp at <a href="https://geekshubsaca
 
 This Project has been done by [José Luis Aparicio](https://github.com/ApcarJo).
 
-Starting date: June 21th 2021. <br>
+Starting date: June 28th 2021. <br>
 Due date: July 5th 2021.
 
-I have used the Trello in order to share the tasks and to have a better organization.
+I have used the Trello in order to organize tasks.
 
 <a name="instructions"></a> 
 ## Instructions :clipboard: 
