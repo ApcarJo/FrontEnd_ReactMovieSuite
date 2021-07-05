@@ -211,7 +211,7 @@ const Home = (props) => {
             <div className="vistaHome" >
                 <div className="contentSearchBar">
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
-                    <button className="findMovieButton" onClick={findMovie}>Search</button>
+                    <button className="findMovieButton" onClick={findMovie}>FIND</button>
                 </div>
                     <div className="pickMovie">
                         <div className="row">
@@ -287,7 +287,7 @@ const Home = (props) => {
                     
                 <div className="contentSearchBar">
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
-                    <button className="findMovieButton" onClick={findMovie}>Search</button>
+                    <button className="findMovieButton" onClick={findMovie}>FIND</button>
                 </div>
                     <div className="pickMovie">
                         <div className="row">
