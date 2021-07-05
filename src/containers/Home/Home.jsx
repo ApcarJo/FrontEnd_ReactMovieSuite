@@ -22,6 +22,11 @@ const Home = (props) => {
         findMovieList: {},
         
     })
+    const [searchMovieAct, setSearchMovieAct] = useState({
+        movie: '',
+        findMovieList2: {},
+        
+    })
 
     const [selectGenre, setSelectGenre] = useState({
         listMoviesGenre: [],
@@ -107,11 +112,19 @@ const Home = (props) => {
 
         try {
             let body = {
-                title: searchMovie.movie
+                title: searchMovie.movie,
+                
             }
+            let actor = searchMovie.movie;
+
             let res = await axios.post(`http://localhost:3006/movies/title`, body);
             setSearchMovie({...searchMovie, findMovieList: res.data.results});
+            console.log(res)
 
+            // res = await axios.get(`http://api.themoviedb.org/3/search/person?query=${actor}&api_key=210d6a5dd3f16419ce349c9f1b200d6d`);
+            // searchMovie.findMovieList.push(res.data.results[0].known_for);
+            // console.log(searchMovie.findMovieList)
+        
         } catch (error) {
             console.log(error);
         }

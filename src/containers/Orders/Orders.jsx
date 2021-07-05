@@ -73,7 +73,7 @@ const Orders = (props) => {
         let year = newDate.getFullYear();
         let date2= day+'/'+month+'/'+year;
         return date2;
-        }
+    }
 
    
     const baseImgUrl = "https://image.tmdb.org/t/p"
