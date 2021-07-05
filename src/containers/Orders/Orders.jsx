@@ -66,6 +66,15 @@ const Orders = (props) => {
         }
     }
 
+    const convertDate = (date) => {
+        let newDate = new Date (date)
+        let day = newDate.getDate();
+        let month = newDate.getMonth()+1;
+        let year = newDate.getFullYear();
+        let date2= day+'/'+month+'/'+year;
+        return date2;
+        }
+
    
     const baseImgUrl = "https://image.tmdb.org/t/p"
     const size = "w200"
@@ -73,15 +82,15 @@ const Orders = (props) => {
         <div className="viewOrders">
             <div className="contentOrders">
                 {viewOrders.map((movie, index)=> (
-                    <div className="movieCard">
+                    <div className="ordersCard">
                         <div className="movieImg">
 
                             <img src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         </div>
                         <div className="movieData">
                             <div>Client ID : {movie.customerId}</div>
-                            <div>Rent Start: {movie.rentStart}</div>
-                            <div>Rent End : {movie.rentEnd}</div>
+                            <div>Rent Start: {convertDate(movie.rentStart)}</div>
+                            <div>Rent End : {convertDate(movie.rentEnd)}</div>
                             <div>Movie ID : {movie.movieId}</div>
                         </div>
                     </div>

@@ -36,3 +36,19 @@
     grid-template-columns: repeat(6, 0.1fr);
     grid-template-rows: repeat(7, 0.2fr);
 }
+
+.ordersCard {
+    padding: 0.5em;
+    height: 30em;
+    border: solid 0.2em $pal-det;
+}
+
+.movieData {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    height: fit-content;
+}
