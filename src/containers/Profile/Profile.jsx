@@ -42,8 +42,8 @@ const Profile = (props) => {
             let res = await axios.post(`http://localhost:3006/customer/id`, body, {headers:{'authorization':'Bearer ' + token}});
             setUserData(res?.data);
 
-        }catch{
-            console.log("cargando")
+        } catch (error) {
+            console.log(error);
         }
     } 
 
@@ -68,8 +68,8 @@ const Profile = (props) => {
 
             sendModify();
 
-        }catch{
-            console.log("cargando")
+        } catch (error) {
+            console.log(error);
         }
     }
 

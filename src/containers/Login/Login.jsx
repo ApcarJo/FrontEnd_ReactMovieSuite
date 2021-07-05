@@ -99,11 +99,12 @@ const Login = (props) => {
             <div className="animationScript">
                 <div className="loginCard">
                     LOGIN
+                    <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")}  placeholder="email" required/>
+                    <div className="errorsText">{msgError.eEmail}</div>
                     
-                            <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")}  placeholder="email" required/>
-                    
-                            <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError ("password")} placeholder="password" required/>
-                            <br></br>
+                    <input className="loginBox" name="password" type="password" onChange={updateCredentials} onBlur={()=>checkError ("password")} placeholder="password" required/>
+                    <div className="errorsText">{msgError.ePassword}</div>
+                    <br></br>
                     <div className="divRow">
                         <div className="sendButton" onClick={()=>logeame()}>Sign in</div>
                         <div>{msgError.eValidate}</div>

@@ -79,8 +79,8 @@ const Home = (props) => {
             // setMovieData(res.data.results);
             // props.dispatch({type:ADD_MOVIE, payload:res.data.results});
             
-        }catch{
-            console.log("error loading")
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -98,8 +98,8 @@ const Home = (props) => {
             let res = await axios.post(`http://localhost:3006/movies/genre`, body);
             setSelectGenre({...selectGenre, listMoviesGenre: res.data.results, totalPagesGenre: res.data?.total_pages});
             
-        }catch{
-            console.log("error loading")
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -112,8 +112,8 @@ const Home = (props) => {
             let res = await axios.post(`http://localhost:3006/movies/title`, body);
             setSearchMovie({...searchMovie, findMovieList: res.data.results});
 
-        }catch {
-            console.log("cargando")
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -144,8 +144,8 @@ const Home = (props) => {
             setMovieOrders(res?.data);
 
             // movieOrders.drawMovieOrders.push(res?.data)      
-        }catch{
-            console.log("cargando")
+        } catch (error) {
+            console.log(error);
         }
     } 
 
