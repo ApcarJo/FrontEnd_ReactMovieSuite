@@ -310,25 +310,7 @@ const Calendar = (props) => {
 			<div className="inputCalendar">
 				<div className="addMonth" name="mes" onClick={()=>sum(datosUser.mes, datosUser.anyo)}>+</div>
 				<div className="addMonth" name="mes" onClick={()=>rest(datosUser.mes, datosUser.anyo)}>-</div>
-					{/* <form className="form7">
-					<select className="input7" type="number" name="mes" onChange={updateFormulario} defaultValue="6" required>
-	    	    	     {selectMonthArray.map((valor, index) => (<option>{valor}</option>))}
 
-	    	    	</select>
-	            	    <label className="lbl-nombre7">
-	            	        <span className="text-nomb7">Month</span>
-	            	    </label>
-	            	</form> */}
-
-				{/* <div>{errors.eAnyo}</div> 
-
-					<form className="form8">
-						<input type='text' className='input8' name='anyo' onChange={updateFormulario} defaultValue="2021" required></input>
-	            	        <label className="lbl-nombre8">
-	            	            <span className="text-nomb8">Year</span>
-	            	        </label>
-	            	</form> */}
-				{/* <input type="date"></input> */}
 
 				<br></br><br></br><br></br>
 				<div type='text' className="writeDate" name='writeDate'> {arrayDate}</div><br></br>

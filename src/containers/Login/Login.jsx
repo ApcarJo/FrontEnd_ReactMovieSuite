@@ -96,7 +96,6 @@ const Login = (props) => {
     return(
         <div className="vistaLogin">
             {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
-            <div className="animationScript">
                 <div className="loginCard">
                     LOGIN
                     <input className="loginBox" name="email" type="text"  onChange={updateCredentials} onBlur={()=>checkError("mail")}  placeholder="email" required/>
@@ -111,7 +110,6 @@ const Login = (props) => {
                         <div className="sendButton" onClick={() => history.push('/register')}>Register now!</div>
                     </div>
                 </div>
-            </div>
         </div>  
     )
 }
