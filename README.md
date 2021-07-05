@@ -112,7 +112,11 @@ Installed dependencies: Redux, React-redux, Redux-localstorage-simple, Nodemon, 
 Thanks to all our classmates for the help and work as a great team.
 
 Things runned out of time to implement:
-
+- better design of the content scroll
+- gradient on scroll
+- price and costs calculation of the rents
+- error when register allow you to create an account without a match with repeat password
+- responsive design
 
 
 [🔝](#top)
