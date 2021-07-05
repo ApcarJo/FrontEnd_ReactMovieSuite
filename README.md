@@ -44,49 +44,52 @@ Run the server.
 
 <br>
 
-On the other side, you will need to clone the backend from [this repository](https://github.com/ApcarJo/BackEnd_ReactMovieSuite) and follow its instructions to run it.
+On the other side, you will need to clone the backend from https://github.com/ApcarJo/BackEnd_ReactMovieSuite and follow its instructions to run it.
 
 Register as a client to use the web app.
 Use: admin@gmail.com * 123456 to access admin role.
+
+This app uses themoviedatabase api to get the data needed for the webapp https://www.themoviedb.org/?language=es-ES
 
 <a name="images"></a>
 ## Screenshots 📸
 
 Home
 
-<img src="src/img/screenshots/home.png" width="1000">
+<img src="src/img/screenshots/home.jpg" width="1000">
 
 Login
 
-<img src="src/img/screenshots/login.png" width="1000">
+<img src="src/img/screenshots/login.jpg" width="1000">
 
-Client profile with our OWN CODE for a INFINITE LOOP SLIDER.
+Customer profile
 
-<img src="src/img/screenshots/clientProfile.png" width="1000">
+<img src="src/img/screenshots/modifyProfile.jpg" width="1000">
+<img src="src/img/screenshots/modifyProfile2.jpg" width="1000">
 
-Create new appointment
+Create new order using my own datePicker improved since the last project. (https://github.com/ApcarJo/Frontend-Dental-Clinic)
 
-<img src="src/img/screenshots/createAppointment.png" width="1000">
+<img src="src/img/screenshots/datePicker.jpg" width="1000">
 
-As a dentist, check your dynamic schedule that updates all the info and shows in real time the appointments of each month, this is not a library, is pure javascript react redux code.
+Pick your movie, select date and rent.
 
-<img src="src/img/screenshots/schedule_datepicker.jpg" width="1000">
+<img src="src/img/screenshots/convertDate_Example2.jpg" width="300"><img src="src/img/screenshots/convertDate_Example.jpg" width="300">
 
-This is our DATEPICKER PURE JAVASCRIPT CODE created for the project. It's a component that uses redux to send the data to each container where is used (clientregister.jsx, dentistregister.jsx, and dentistprofile.jsx container views). It can show the months by name, write the year in roman numerals, and some other calculations related to the date, this options are in the code but not activated for the project. Part of the code is used to create the dynamic schedule draw in dentist profile.
+Used own code as "moment" library to convert date types variables to a more comfort type.
 
-<img src="src/img/screenshots/purecode_datepicker.PNG" width="1000">
+<img src="src/img/screenshots/convertDate.jpg" width="500">
 
-Update your profile
+Admin role can check all history orders. I had not time to implement my schedule code https://github.com/ApcarJo/Frontend-Dental-Clinic where you can check in a calendar frame the results.
 
-<img src="src/img/screenshots/updateDentist.PNG" width="1000">
+<img src="src/img/screenshots/admin_orders.jpg" width="1000">
 
 Check your appointments history
 
-<img src="src/img/screenshots/HistoryApp.PNG" width="1000">
+<img src="src/img/screenshots/genres.jpg" width="1000">
 
-Register with our new bran datepicker and our smooth MODERN CSS ANIMATION for the inputs
+Search input will show you the results in the top of your view
 
-<img src="src/img/screenshots/registerClient.PNG" width="1000">
+<img src="src/img/screenshots/searchresults.jpg" width="1000">
 
 <a name="tools"></a>
 ## Tools 🔧
