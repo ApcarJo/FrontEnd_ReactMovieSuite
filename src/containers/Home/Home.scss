@@ -24,6 +24,7 @@
 .headerMovies {
     @extend .contentMovies;
     overflow: unset;
+    justify-content: center;
 }
 
 .movieCard {
