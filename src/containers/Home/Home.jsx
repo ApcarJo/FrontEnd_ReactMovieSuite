@@ -360,7 +360,7 @@ const Home = (props) => {
                 </div>
 
                 <div className="headerMovies">
-                    <div name="rest" onClick={rest}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add}> : | + |</div>
+                    <div name="rest" onClick={rest1}>| - | : </div><div>MOVIES BY GENRE</div><div name="add" onClick={add1}> : | + |</div>
                 </div>
                 <select className="genreSelector" name="movieGenre" onChange={updateGenres} onClick={()=>byGenre()} defaultValue="Action">
                     {selectGenre.genreTypes.map((genre, index)=> (<option key={index}>{genre}</option>))}
@@ -373,8 +373,6 @@ const Home = (props) => {
                         </div>
                         <div className="movieData">
                             <p> Movie: {movie.title} </p>
-                            <p> Rated : {movie.vote_average} </p>
-                            <button className="rentButton" onClick={()=>orderMovie(movie.id)}>Rent</button>
                         </div>
                     </div>
                     ))}
