@@ -56,7 +56,7 @@ const Register = (props) => {
         console.log(res);
 
         setTimeout(()=>{
-            history.push(`/profile`);
+            history.push(`/login`);
         },750);
 
     }
