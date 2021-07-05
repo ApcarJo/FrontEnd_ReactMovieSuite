@@ -35,8 +35,15 @@
         // transform: scale(1.1);
         box-sizing: border-box;
         transition: 0.2s ease;
-        border: solid 0.2em white;
         z-index: 99;
+    }
+}
+
+.movieImg {
+    transition: 0.2s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+        transition: 0.2s ease-in-out;
     }
 }
 
@@ -128,7 +135,7 @@
 
 .rentBox {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     box-sizing: border-box;
 }
@@ -136,9 +143,14 @@
 .showCalendar {
     opacity: 0;
     transition: 0.2s ease;
-    position: inherit;
+    position: absolute;
     height: fit-content;
-    transform: translateX(-14em);
+    transform: translateX(1000em)
+
+}
+
+.review {
+    padding: 1em;
 }
 
 .squareCalendar {
@@ -154,6 +166,7 @@
             .showCalendar {
             opacity: 1;
             transition: 0.2s ease;
+            transform: translateX(-2em)
             }
     }
 }

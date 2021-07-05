@@ -217,18 +217,24 @@ const Home = (props) => {
                         <div className="row">
                             <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
                             <div className="col">
-                                <div>Title : {movieOrders.title}</div>
-                                <div>Rated : {movieOrders.vote_average}</div>
-                                <div>Review: {movieOrders.overview}</div>
+                                <div className="review">
+                                    <div>Title : {movieOrders.title}</div>
+                                    <div>Rated : {movieOrders.vote_average}</div>
+                                    <div>Review: {movieOrders.overview}</div>
+                                </div>
                                 <div className="rentBox">
-                                    <div className="squareCalendar">Date Start <input type="text" defaultValue={movieOrders.rentStartMovie} className="dateInfo"></input>
-                                        <div className="showCalendar" onClick={()=>updateRentStart()}>
-                                            <Calendar></Calendar>
+                                    <div className="col">Date Start
+                                        <div className="squareCalendar">    <input type="text" defaultValue=   {movieOrders.rentStartMovie}   className="dateInfo"></input>
+                                            <div className="showCalendar"   onClick={()=>updateRentStart()}>
+                                                <Calendar></Calendar>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="squareCalendar" onClick={()=>updateRentEnd()}>Date End <input type="text" defaultValue={movieOrders.rentEndMovie} className="dateInfo"></input>
-                                        <div className="showCalendar">
-                                            <Calendar></Calendar>
+                                    <div className="col">Date End
+                                        <div className="squareCalendar"     onClick={()=>updateRentEnd()}   ><input type="text" defaultValue=  {movieOrders.rentEndMovie}    className="dateInfo"></input>
+                                            <div className="showCalendar">
+                                                <Calendar></Calendar>
+                                            </div>
                                         </div>
                                     </div>
                                     <button className="rentButton" onClick={()=>orderMovie(movieOrders)}>Rent</button>
@@ -244,20 +250,11 @@ const Home = (props) => {
                     <div className="movieCard">
                         <div key={index} className="movieImg">
 
-                            {/* <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/> */}
                             <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             
                             <div className="movieData">
-                                {/* <p> Movie: {movie.title} </p> */}
                                 <p> Rated : {movie.vote_average} </p>
-                                {/* <p> Id : {movie.id} </p> */}
                             </div>
-                            {/* Crear en CSS gradientes con transparencias, overflow: scroll. */}
-                             {/* <p> DENTIST : {movie.genre_ids} </p> */}           
-                             {/* <div className="buttons1">
-                               <div className="buttonUpdateA" onClick={() => saveAppointment(appointment)}>UPDATE</div>
-                               <div className="buttonDeleteA" onClick={() => deleteAppointment(appointment)}>REMOVE</div>
-                             </div> */} 
                         </div>
                     </div>
                 ))}
@@ -296,9 +293,11 @@ const Home = (props) => {
                         <div className="row">
                             <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
                             <div className="col">
-                                <div>Title : {movieOrders.title}</div>
-                                <div>Rated : {movieOrders.vote_average}</div>
-                                <div>Review: {movieOrders.overview}</div>
+                                <div className="review">
+                                    <div>Title : {movieOrders.title}</div>
+                                    <div>Rated : {movieOrders.vote_average}</div>
+                                    <div>Review: {movieOrders.overview}</div>
+                                </div>
                                 <div className="rentBox">
                                     <div className="col">Date Start
                                         <div className="squareCalendar">    <input type="text" defaultValue=   {movieOrders.rentStartMovie}   className="dateInfo"></input>
@@ -327,9 +326,6 @@ const Home = (props) => {
                             <div key={index} className="movieImg">
                                 <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                             </div>
-                            {/* <div className="movieData">
-                                <p> Movie: {movie.title} </p>
-                            </div>   */}
                         </div>
                     ))}
                 </div>
@@ -343,7 +339,7 @@ const Home = (props) => {
                             <img onClick={()=>findMovieById(movie)} src={`${baseImgUrl}/${size}${movie.poster_path}`}  alt="poster"/>
                         </div>
                         <div className="movieData">
-                            {/* <p> Movie: {movie.title} </p> */}
+
                             <p> Rated : {movie.vote_average} </p>
                         </div>
                     </div>
