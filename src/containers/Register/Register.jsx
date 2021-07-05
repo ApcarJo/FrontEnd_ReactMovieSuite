@@ -124,6 +124,7 @@ const Register = (props) => {
                 <div className="box1">
                         <input className="inputRegister" name="name" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Name" required/>
                 </div>
+                <div className="errorsText">{errors.eName}</div>
                 {/*<div className="box1">
                         <input className="input" name="lastname1" type="text" onChange={updateFormulario} onBlur={()=>checkError("lastname")} required/>
                 </div>
@@ -133,15 +134,18 @@ const Register = (props) => {
                 <div className="box1">
                         <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" required/>
                 </div>
+                <div className="errorsText">{errors.eEmail}</div>
                 {/* <div className="box1">
                         <input className="input2" name="phone" type="text" onChange={updateFormulario} onBlur={()=>checkError("phone")}required/>
                 </div> */}
                 <div className="box1">
                         <input className="inputRegister" name="password" type="password" onChange={updateFormulario} onBlur={()=>checkError("password")} placeholder="Password" required/>
                 </div>
+                <div className="errorsText">{errors.ePassword}</div>
                 <div className="box1">
                         <input className="inputRegister" name="password2" type="password" onChange={updateFormulario} onBlur={()=>checkError("password2")} placeholder="Repeat Password" required/>
                 </div>
+                <div className="errorsText">{errors.ePassword2}</div>
                 {/* <div className="box1">
                             <input className="input5" name="city" type="text" onChange={updateFormulario} onBlur={()=>checkError("city")}required/>
                 </div>  
