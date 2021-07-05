@@ -1,9 +1,10 @@
 .header {
+    box-sizing: border-box;
     height:  6em;
     background-color: $pal-main;
     color: $pal-text;
     width: 100%;
-    padding: 3em;
+    padding: 5em;
     /* background-color: rgb(142, 165, 209); */
     
     display: flex;

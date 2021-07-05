@@ -22,11 +22,11 @@ const Home = (props) => {
         findMovieList: {},
         
     })
-    const [searchMovieAct, setSearchMovieAct] = useState({
-        movie: '',
-        findMovieList2: {},
+    // const [searchMovieAct, setSearchMovieAct] = useState({
+    //     movie: '',
+    //     findMovieList2: {},
         
-    })
+    // })
 
     const [selectGenre, setSelectGenre] = useState({
         listMoviesGenre: [],
