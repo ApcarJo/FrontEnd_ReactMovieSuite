@@ -3,9 +3,12 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Calendar from '../../components/Calendar/Calendar';
+import { useHistory } from 'react-router-dom';
 
 
 const Register = (props) => {
+
+    let history = useHistory();
 
     // Hook
     const [datosUser,setDatosUser] = useState(
@@ -51,6 +54,11 @@ const Register = (props) => {
 
         let res = await axios.post('http://localhost:3006/customer', body);
         console.log(res);
+
+        setTimeout(()=>{
+            history.push(`/profile`);
+        },750);
+
     }
 
     const checkError = (arg) => {

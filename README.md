@@ -46,6 +46,9 @@ Run the server.
 
 On the other side, you will need to clone the backend from [this repository](https://github.com/ApcarJo/BackEnd_ReactMovieSuite) and follow its instructions to run it.
 
+Register as a client to use the web app.
+Use: admin@gmail.com * 123456 to access admin role.
+
 <a name="images"></a>
 ## Screenshots 📸
 
