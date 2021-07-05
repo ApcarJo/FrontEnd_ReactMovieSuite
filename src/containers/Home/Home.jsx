@@ -3,9 +3,12 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { ADD_MOVIE } from '../../redux/reducers/movie-reducer';
-import Calendar from '../../components/Calendar/Calendar.jsx'
+import Calendar from '../../components/Calendar/Calendar.jsx';
+import {useHistory} from 'react-router-dom';
 
 const Home = (props) => {
+
+    let history = useHistory();
 
     // HOOKS
     const [movieData, setMovieData] = useState({
@@ -30,7 +33,7 @@ const Home = (props) => {
 
     const [rentMovie, setRentMovie] = useState({
         movieId: '',
-        userId: props.credentials.customer.id,
+        userId: '12',
 
     })
 
@@ -198,15 +201,12 @@ const Home = (props) => {
 
     const updateRentEnd = () => {
         movieOrders.rentEndMovie = props.calendar.date;
-        
     }
 
+    if(!props.credentials.customer?.name)
+        history.push('../login')
 
-
-
-
-    if (searchMovie.findMovieList[0]==null) {
-        
+    if (searchMovie.findMovieList[0]==null) {    
         return (
             <div className="vistaHome" >
                 <div className="contentSearchBar">

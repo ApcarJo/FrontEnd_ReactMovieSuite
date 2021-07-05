@@ -102,17 +102,6 @@ const Register = (props) => {
                 break;
         }
     }
-     const errorStyle = (arg) =>{
-        
-        let errorDefault = "name";
-        let errorWarning = "red";
-
-        if (errors.eName!== ''){
-            return errorWarning;
-        }
-
-        return errorDefault;
-     }
 
     return (
         <div className="vistaRegisterCustomer">

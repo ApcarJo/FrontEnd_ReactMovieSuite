@@ -29,7 +29,7 @@ const Header = (props) => {
                 <div className="headerUser">
                     <Button path="/profile" destination={props.credentials.customer?.name}/>
                     <p>|</p>
-                    <Button path="/register" destination="LOG OUT"/>
+                    <div className="linkLogout" onClick={() => logOut()}>LOGOUT</div>
                 </div>
 
         </div>
@@ -48,7 +48,7 @@ const Header = (props) => {
                 <div className="headerUser">
                     <Button path="/profile" destination={props.credentials.customer?.name}/>
                     <p>|</p>
-                    <Button path="/register" destination="LOG OUT"/>
+                    <div className="linkLogout" onClick={() => logOut()}>LOGOUT</div>
                 </div>
 
         </div>
