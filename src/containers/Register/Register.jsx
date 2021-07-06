@@ -48,7 +48,7 @@ const Register = () => {
         }
 
         if(datosUser.password==datosUser.password2){
-            let res = await axios.post('http://localhost:3006/customer', body);
+            let res = await axios.post('eu-cdbr-west-01.cleardb.com/customer', body);
             
             setTimeout(()=>{
                 history.push(`/login`);
