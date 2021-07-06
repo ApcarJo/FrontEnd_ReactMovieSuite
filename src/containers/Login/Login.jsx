@@ -78,7 +78,7 @@ const Login = (props) => {
             password : credentials.password
         }
         // Envío por axios
-        let res = await axios.post(`http://localhost:3006/login`, body);
+        let res = await axios.post(`eu-cdbr-west-01.cleardb.com/login`, body);
         // let token = res.data.token;
         //
         props.dispatch({type:LOGIN, payload:res.data});
