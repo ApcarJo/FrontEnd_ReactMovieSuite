@@ -43,7 +43,7 @@ const Customer = (props) => {
                 customerId: props.credentials.customer?.id, // CHANGE THIS VALUE FOR A HOOKS
             }
 
-            let res = await axios.post(`http://localhost:3006/customer/id`, body, {headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/customer/id`, body, {headers:{'authorization':'Bearer ' + token}});
             setUserData(res?.data);
 
         } catch (error) {
@@ -55,7 +55,7 @@ const Customer = (props) => {
         try {
             let token = props.credentials?.token;
 
-            let res = await axios.post(`http://localhost:3006/customer/`, {headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/`, {headers:{'authorization':'Bearer ' + token}});
             setUserData(res?.data);
 
         } catch (error) {
@@ -80,7 +80,7 @@ const Customer = (props) => {
                 password: userData.password
             }
 
-            let res = await axios.put(`http://localhost:3006/customer/`, body, {headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.put(`https://moviesuiteback.herokuapp.com/`, body, {headers:{'authorization':'Bearer ' + token}});
             
             sendModify();
 
