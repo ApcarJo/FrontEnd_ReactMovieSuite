@@ -2,7 +2,7 @@
 <a name="top"></a>
 
 <h1 align="center">
-  <br> Old Fashion Film blockbuster Javascript 
+  <br> Old Fashion Film blockbuster with Javascript 
 </h1>
 
 ---

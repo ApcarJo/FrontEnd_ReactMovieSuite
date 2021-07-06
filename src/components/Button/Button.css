@@ -1,6 +1,6 @@
 .button{
-    margin: 1em;
     transition: 0.2s;
+    padding: 0.5em;
 }
 
 .button:hover{

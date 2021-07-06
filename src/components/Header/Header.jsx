@@ -15,7 +15,7 @@ const Header = (props) => {
         history.push("/")
     }
 
-    if(props.credentials.customer?.name){
+    if((props.credentials.customer?.name)&&(props.credentials.customer?.admin==null)){
 
         return(
             <div className="header">
@@ -43,6 +43,8 @@ const Header = (props) => {
                     <Button path="/" destination="HOME"/>
                     <Button path="/orders" destination="ORDERS"/>
                     <Button path="/profile" destination="PROFILE"/>
+                    <Button path="/customers" destination="CUSTOMERS"/>
+
                 </div>
 
                 <div className="headerUser">

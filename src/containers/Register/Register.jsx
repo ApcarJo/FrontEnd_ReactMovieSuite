@@ -6,7 +6,7 @@ import Calendar from '../../components/Calendar/Calendar';
 import { useHistory } from 'react-router-dom';
 
 
-const Register = (props) => {
+const Register = () => {
 
     let history = useHistory();
 
@@ -41,24 +41,19 @@ const Register = (props) => {
     }
 
     const applyRegister = async () => {
-        // e.preventDefault();
-        
         let body = {
             name: datosUser.name,
             mail : datosUser.email,
             password : datosUser.password
-
-            //Crear un constructor escalable de datos de registro con variables en un array para el mensaje de errores y variables dinámicas en el nombre de la clase y el nombre del div donde se imprimen los inputs.
         }
-        // console.log(body);
 
-        let res = await axios.post('http://localhost:3006/customer', body);
-        console.log(res);
-
-        setTimeout(()=>{
-            history.push(`/login`);
-        },750);
-
+        if(datosUser.password==datosUser.password2){
+            let res = await axios.post('http://localhost:3006/customer', body);
+            
+            setTimeout(()=>{
+                history.push(`/login`);
+            },750);
+        }
     }
 
     const checkError = (arg) => {
@@ -80,21 +75,19 @@ const Register = (props) => {
                 
             break;
 
-            // case 'password':
-            //     if (! /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm.test(datosUser.password)){
-            //     // if (datosUser.password.length < 8){
-            //         setErrors({...errors, ePassword: 'At least 8 characters, must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number. Can contain special characters'});
-            //     }else{
-            //         setErrors({...errors, ePassword: ''});
-            //     }
-            // break;
-
             case 'phone':
                 if ((! /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm.test(datosUser.phone))||(datosUser.phone.length > 16)){
-                // if (datosUser.password.length < 8){
                     setErrors({...errors, ePhone: 'Wrong phone number'});
                 }else{
                     setErrors({...errors, ePhone: ''});
+                }
+            break;
+
+            case 'password':
+                if (! /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm.test(datosUser.password)){
+                    setErrors({...errors, ePassword: 'At least 8 characters, must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number. Can contain special characters'});
+                }else{
+                    setErrors({...errors, ePassword: ''});
                 }
             break;
 
@@ -113,54 +106,34 @@ const Register = (props) => {
 
     return (
         <div className="vistaRegisterCustomer">
-            <div className="leftSide">
-            {/* <pre>{JSON.stringify(datosUser, null,2)}</pre> */}
-            </div>
             <div className="registerCard">
                 REGISTER
                 <div className="box1">
-                        <input className="inputRegister" name="name" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Name" required/>
+                    <input className="inputRegister" name="name" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Name" required/>
+                    <div className="errorsText">{errors.eName}</div>
                 </div>
-                <div className="errorsText">{errors.eName}</div>
-                {/*<div className="box1">
-                        <input className="input" name="lastname1" type="text" onChange={updateFormulario} onBlur={()=>checkError("lastname")} required/>
-                </div>
-                <div className="box1">
-                        <input className="input" name="lastname2" type="text" onChange={updateFormulario} onBlur={()=>checkError("name")}/>
-                </div> */}
-                <div className="box1">
-                        <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" required/>
-                </div>
-                <div className="errorsText">{errors.eEmail}</div>
-                {/* <div className="box1">
-                        <input className="input2" name="phone" type="text" onChange={updateFormulario} onBlur={()=>checkError("phone")}required/>
-                </div> */}
-                <div className="box1">
-                        <input className="inputRegister" name="password" type="password" onChange={updateFormulario} onBlur={()=>checkError("password")} placeholder="Password" required/>
-                </div>
-                <div className="errorsText">{errors.ePassword}</div>
-                <div className="box1">
-                        <input className="inputRegister" name="password2" type="password" onChange={updateFormulario} onBlur={()=>checkError("password2")} placeholder="Repeat Password" required/>
-                </div>
-                <div className="errorsText">{errors.ePassword2}</div>
-                {/* <div className="box1">
-                            <input className="input5" name="city" type="text" onChange={updateFormulario} onBlur={()=>checkError("city")}required/>
-                </div>  
-                <div className="box1">
-                        <input className="input6" name="cp" type="text" onChange={updateFormulario} onBlur={()=>checkError("cp")}required/>
-                </div> */}
                 
-                {/* <Calendar/> */}
-                    {/* <input className="name" name="dateOfBirth" type="date" onChange=        {updateFormulario} onBlur={()=>checkError("dateOfBirth")}      placeholder="dateOfBirth"></  input><br></br>
-                    <div>{errors.eDateofbirth}</div> */}
-                <div className="sendButton" onClick={()=>applyRegister()}>Enviar</div>
+ 
+                <div className="box1">
+                    <input className="inputRegister" name="email" type="text" onChange={updateFormulario} onBlur={()=>checkError("email")} placeholder="Email" required/>
+                    <div className="errorsText">{errors.eEmail}</div>
+                </div>
+                
+
+                <div className="box1">
+                    <input className="inputRegister" name="password" type="password" onChange={updateFormulario} onBlur={()=>checkError("password")} placeholder="Password" required/>
+                    <div className="errorsText">{errors.ePassword}</div>
+                </div>
+                
+                <div className="box1">
+                    <input className="inputRegister" name="password2" type="password" onChange={updateFormulario} onBlur={()=>checkError("password2")} placeholder="Repeat Password" required/>
+                    <div className="errorsText">{errors.ePassword2}</div>
+                </div>
+                
+                <div className="sendButton" onClick={()=>applyRegister()}>Register</div>
             </div>
         </div>
     )
 }
 
 export default Register;
-
-// export default connect((state)=>({
-//     calendar: state.calendar
-// }))(Register);
