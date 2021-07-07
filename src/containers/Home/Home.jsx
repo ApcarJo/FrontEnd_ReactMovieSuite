@@ -141,9 +141,7 @@ const Home = (props) => {
         }
     }
 
-    const findMovieById = async (value) => {
-        (rentMovie.showMovie=='pickMovie') ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';
-                
+    const findMovieById = async (value) => {       
         try {
             let body = {
                 id: value.id
@@ -151,6 +149,8 @@ const Home = (props) => {
 
             let res = await axios.post(`http://localhost:3006/movies/id`, body);
             setMovieOrders(res?.data);
+
+            ((rentMovie.showMovie=='pickMovie')&&(rentMovie.showMovie!=res.data.title)) ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';
     
         } catch (error) {
             console.log(error);

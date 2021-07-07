@@ -18,7 +18,6 @@
     
     overflow: scroll;
     outline: none;
-
 }
 
 .headerMovies {
@@ -51,6 +50,7 @@
 .pickMovie {
     display: flex;
     box-sizing: border-box;
+    transform: translateY(-20em);
     transition: 0.5s ease;
     padding: 1em;
     z-index: 99;
