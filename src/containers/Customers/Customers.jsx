@@ -25,7 +25,7 @@ const Customer = (props) => {
 
     // STATES
     useEffect(()=>{
-        viewProfile();
+        // viewProfile();
         viewAllProfiles();
     },[]);
 
@@ -37,9 +37,6 @@ const Customer = (props) => {
         try {
             let token = props.credentials?.token;
 
-            // let res = await axios.post(`http://localhost:3006/customer/`, {headers:{'authorization':'Bearer ' + token}});
-            // setUserData(res?.data);
-            
             let body = {
                 customerId: props.credentials.customer?.id, // CHANGE THIS VALUE FOR A HOOKS
             }
@@ -56,9 +53,10 @@ const Customer = (props) => {
         try {
             let token = props.credentials?.token;
 
-            let res = await axios.get(`https://localhost:3006/`, {headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.get(`https://localhost:3006/customer`, {headers:{'authorization':'Bearer ' + token}});
             setUserData(res?.data);
-            console.log(res.data)
+            console.log(userData)
+            
 
         } catch (error) {
             console.log(error);
@@ -92,14 +90,9 @@ const Customer = (props) => {
     }
 
     const sendModify = () => {
-
         // Switch view implemented
-
         (view.modifyView=='profileCard') ? view.modifyView='modifyCard' : view.modifyView='profileCard';
-
         (view.modifyViewP=='profileCard') ? view.modifyViewP='modifyCard' : view.modifyViewP='profileCard';
-       
-        //console.log(view.modifyView, view.modifyViewP);
         viewProfile();
     }
 

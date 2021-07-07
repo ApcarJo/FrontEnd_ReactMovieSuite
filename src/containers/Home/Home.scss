@@ -6,6 +6,7 @@
     color: white;
     background-color: $pal-main;
     padding: 3em;
+    padding-top: 1em;
 }
 
 .contentMovies {
@@ -50,7 +51,7 @@
 .pickMovie {
     display: flex;
     box-sizing: border-box;
-    transform: translateY(-20em);
+    // transform: translateY(-20em);
     transition: 0.5s ease;
     padding: 1em;
     z-index: 99;
@@ -73,7 +74,7 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding: 1.5em;
-    height: 15em;
+    height: 2em;
 }
 
 .searchMovie {
