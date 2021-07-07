@@ -37,9 +37,7 @@ const Home = (props) => {
     })
 
     const [rentMovie, setRentMovie] = useState({
-        movieId: '',
-        userId: '12',
-
+        showMovie: 'hideBox'
     })
 
     const [movieOrders, setMovieOrders] = useState ({
@@ -148,6 +146,7 @@ const Home = (props) => {
     }
 
     const findMovieById = async (value) => {
+        (rentMovie.showMovie=='pickMovie') ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';
         try {
             let body = {
                 id: value.id
@@ -226,7 +225,7 @@ const Home = (props) => {
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>FIND</button>
                 </div>
-                    <div className="pickMovie">
+                    <div className={rentMovie.showMovie}>
                         <div className="row">
                             <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
                             <div className="col">
@@ -302,7 +301,7 @@ const Home = (props) => {
                     <input className="searchMovie" name="movie" placeholder="Movie name" onBlur={updateSearchMovie}></input>
                     <button className="findMovieButton" onClick={findMovie}>FIND</button>
                 </div>
-                    <div className="pickMovie">
+                    <div className={rentMovie.showMovie}>
                         <div className="row">
                             <img src={`${baseImgUrl}/${size}${movieOrders.poster_path}`}alt="poster"/>
                             <div className="col">

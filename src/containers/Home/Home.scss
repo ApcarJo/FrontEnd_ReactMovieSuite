@@ -51,13 +51,12 @@
 .pickMovie {
     display: flex;
     box-sizing: border-box;
-    transform: translateX(20em);
-    transform: translateY(-22em);
+    // transform: translateX(20em);
+    // transform: translateY(-22em);
     transition: 0.5s ease;
     padding: 1em;
-    // transform: translateY(-30em);
     z-index: 99;
-    position: fixed;
+    position: absolute;
     
     background-color: $pal-main;
     opacity: 1;
@@ -66,8 +65,10 @@
     border: solid 0.2em $pal-det;
     // float: left;
 }
- 
 
+.hideBox {
+    display: none;
+} 
 
 .contentSearchBar {
     display: flex;

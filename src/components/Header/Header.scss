@@ -1,16 +1,19 @@
 .header {
     box-sizing: border-box;
-    height:  6em;
+    height:  3em;
     background-color: $pal-main;
     color: $pal-text;
     width: 100%;
-    padding: 3em;
+    min-width: 31.25em;
+    padding: 0.5em;
+
     /* background-color: rgb(142, 165, 209); */
     
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    border-bottom: solid 0.1em $pal-det;
 }
 
 .headerLogo{
