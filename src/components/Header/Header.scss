@@ -16,11 +16,6 @@
     border-bottom: solid 0.1em $pal-det;
 }
 
-.headerLogo{
-    width: 3.5em;
-    transition: 0.3s;
-}
-
 .headerLogo:hover {
     cursor: pointer;
     transform: scale(1.1);
@@ -45,7 +40,7 @@
 }
 
 .linkLogout {
-    margin: 1em;
+    padding: 0.5em;
     transition: 0.2s;
 }
 

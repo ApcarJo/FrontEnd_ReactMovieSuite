@@ -17,7 +17,6 @@ const Orders = (props) => {
     // STATES
     useEffect(()=>{
         findOrders();
-        // findMoviesById();
     },[]);
 
     useEffect(()=>{
@@ -60,7 +59,6 @@ const Orders = (props) => {
             let res = await axios.post(`http://localhost:3006/movies/id`, body);
             setMovieOrders(res?.data);
 
-            // movieOrders.drawMovieOrders.push(res?.data)      
         } catch (error) {
             console.log(error);
         }
