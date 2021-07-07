@@ -116,7 +116,7 @@ const Profile = (props) => {
                     </div>
                     <div className={view.modifyView}>
                         {/* <input className="modifyData" defaultValue={props.credentials.customer.name}> */}
-                        <div className="labelData">Name</div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} hidden="false"/>
+                        <div className="labelData">Name</div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name}/>
                         <div className="labelData">Surname1</div><input className="profileData" name="surname1" onChange={updateUserData}defaultValue={userData.surname1}/>
                         <div className="labelData">Surname2</div><input className="profileData" name="surname2" onChange={updateUserData}defaultValue={userData.surname2}/>
                         <div className="row">

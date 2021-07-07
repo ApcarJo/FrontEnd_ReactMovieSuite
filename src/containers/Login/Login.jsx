@@ -78,7 +78,7 @@ const Login = (props) => {
             password : credentials.password
         }
         // Envío por axios
-        let res = await axios.post(`https://moviesuiteback.herokuapp.com/login`, body);
+        let res = await axios.post(`http://localhost:3006/login`, body);
         // let token = res.data.token;
         //
         props.dispatch({type:LOGIN, payload:res.data});

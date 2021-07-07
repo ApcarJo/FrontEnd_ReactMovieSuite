@@ -51,19 +51,17 @@
 .pickMovie {
     display: flex;
     box-sizing: border-box;
-    // transform: translateX(20em);
-    // transform: translateY(-22em);
     transition: 0.5s ease;
     padding: 1em;
     z-index: 99;
-    position: absolute;
+    position: fixed;
     
     background-color: $pal-main;
     opacity: 1;
     height: fit-content;
     width: 50em;
-    border: solid 0.2em $pal-det;
-    // float: left;
+    border: solid 0.3em $pal-det;
+    border-radius: 0.5em;
 }
 
 .hideBox {
@@ -191,6 +189,7 @@
         background-color: $pal-det;
         cursor: pointer;
     }
+    color: white;
 }
 
 .dateInfo {

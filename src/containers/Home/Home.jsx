@@ -76,7 +76,7 @@ const Home = (props) => {
             const onlyUnique = (value, index, self) => {
                 return self.indexOf(value) === index;
               }
-            // let res = await axios.get(`https://moviesuiteback.herokuapp.com/movies` );
+            // let res = await axios.get(`http://localhost:3006/movies` );
             let res = await axios.get(`https://api.themoviedb.org/3/movie/300/recommendations?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US&page=${movieData.pageNum}` );
             setMovieData({...movieData, listMovies: res.data.results, totalPages: res.data?.total_pages});
             // setMovieData(res.data.results);
@@ -98,7 +98,7 @@ const Home = (props) => {
                 genre: selectGenre.movieGenre,
                 page: selectGenre.pageNum
             }
-            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/genre`, body);
+            let res = await axios.post(`http://localhost:3006/movies/genre`, body);
             setSelectGenre({...selectGenre, listMoviesGenre: res.data.results, totalPagesGenre: res.data?.total_pages});
             
         } catch (error) {
@@ -115,13 +115,9 @@ const Home = (props) => {
             }
             let actor = searchMovie.movie;
 
-            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/title`, body);
+            let res = await axios.post(`http://localhost:3006/movies/title`, body);
             setSearchMovie({...searchMovie, findMovieList: res.data.results});
             console.log(res)
-
-            // res = await axios.get(`http://api.themoviedb.org/3/search/person?query=${actor}&api_key=210d6a5dd3f16419ce349c9f1b200d6d`);
-            // searchMovie.findMovieList.push(res.data.results[0].known_for);
-            // console.log(searchMovie.findMovieList)
         
         } catch (error) {
             console.log(error);
@@ -139,7 +135,7 @@ const Home = (props) => {
             rentStart: movieOrders.rentStartMovie,
             rentEnd: movieOrders.rentEndMovie
         }
-        let res = await axios.post(`https://moviesuiteback.herokuapp.com/order`, body, {headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
         } else {
             console.log("fecha incorrecta");
         }
@@ -147,15 +143,15 @@ const Home = (props) => {
 
     const findMovieById = async (value) => {
         (rentMovie.showMovie=='pickMovie') ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';
+                
         try {
             let body = {
                 id: value.id
             }
 
-            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/id`, body);
+            let res = await axios.post(`http://localhost:3006/movies/id`, body);
             setMovieOrders(res?.data);
-
-            // movieOrders.drawMovieOrders.push(res?.data)      
+    
         } catch (error) {
             console.log(error);
         }
@@ -213,6 +209,10 @@ const Home = (props) => {
 
     const updateRentEnd = () => {
         movieOrders.rentEndMovie = props.calendar.date;
+    }
+
+    const hideBox = () => {
+        (rentMovie.showMovie=='pickMovie') ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';
     }
 
     if(!props.credentials.customer?.name)
