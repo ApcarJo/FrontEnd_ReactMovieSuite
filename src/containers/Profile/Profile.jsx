@@ -41,7 +41,7 @@ const Profile = (props) => {
             }
 
             let res = await axios.post(`https://moviesuiteback.herokuapp.com/customer/id`, body, { headers: { 'authorization': 'Bearer ' + token } });
-            setUserDataId(res?.data);
+            setUserData(res?.data);
 
         } catch (error) {
             console.log(error);
@@ -116,19 +116,19 @@ const Profile = (props) => {
                     <button className="sendButton" onClick={sendModify}>Modify</button>
                 </div>
                 <div className={view.modifyView}>
-                    <div className="labelData">Name</div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userDataId.name} />
-                    <div className="labelData">Surname1</div><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userDataId.surname1} />
-                    <div className="labelData">Surname2</div><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userDataId.surname2} />
+                    <div className="labelData">Name</div><input className="profileData" name="name" onChange={updateUserData} defaultValue={userData.name} />
+                    <div className="labelData">Surname1</div><input className="profileData" name="surname1" onChange={updateUserData} defaultValue={userData.surname1} />
+                    <div className="labelData">Surname2</div><input className="profileData" name="surname2" onChange={updateUserData} defaultValue={userData.surname2} />
                     <div className="row">
                         <div className="col">
-                            <div className="labelData1">City</div><input className="profileData1" name="city" onChange={updateUserData} defaultValue={userDataId.city} />
+                            <div className="labelData1">City</div><input className="profileData1" name="city" onChange={updateUserData} defaultValue={userData.city} />
                         </div>
                         <div className="col">
-                            <div className="labelPc">P.C.</div><input className="profileDataPc" name="postalcode" onChange={updateUserData} defaultValue={userDataId.postalcode} />
+                            <div className="labelPc">P.C.</div><input className="profileDataPc" name="postalcode" onChange={updateUserData} defaultValue={userData.postalcode} />
                         </div>
                     </div>
-                    <div className="labelData">Address</div><input className="profileData" name="address" onChange={updateUserData} defaultValue={userDataId.address} />
-                    <div className="labelData">Phone</div><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userDataId.phone} />
+                    <div className="labelData">Address</div><input className="profileData" name="address" onChange={updateUserData} defaultValue={userData.address} />
+                    <div className="labelData">Phone</div><input className="profileData" name="phone" onChange={updateUserData} defaultValue={userData.phone} />
                     <br></br>
                     <div className="row">
                         <button className="sendButton" onClick={modifyProfile}>SAVE</button>
