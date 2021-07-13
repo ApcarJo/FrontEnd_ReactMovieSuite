@@ -8,3 +8,21 @@
 .customerLabel{
     width: 13em;
 }
+
+.tableGrid {
+    padding: 2em;
+}
+
+.vistaCustomers {
+    @extend .center;
+    flex-direction: column;
+    background-color: $pal-main;
+    height: 100vh;
+    padding: 2em;
+    color: white;
+}
+
+.hideCard {
+    @extend .vistaCustomers;
+    display: none;
+}
