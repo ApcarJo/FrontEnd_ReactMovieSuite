@@ -36,7 +36,7 @@ const Customer = (props) => {
         try {
             let token = props.credentials?.token;
 
-            let res = await axios.get(`http://localhost:3006/customer`, { headers: { 'authorization': 'Bearer ' + token } });
+            let res = await axios.get(`https://moviesuiteback.herokuapp.com/customer`, { headers: { 'authorization': 'Bearer ' + token } });
             setUserData(res?.data);
 
         } catch (error) {
@@ -52,7 +52,7 @@ const Customer = (props) => {
                 customerId: userData.id,
             }
 
-            let res = await axios.post(`https://localhost:3006/customer/id`, body, { headers: { 'authorization': 'Bearer ' + token } });
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/customer/id`, body, { headers: { 'authorization': 'Bearer ' + token } });
             setUserDataId(res?.data);
 
         } catch (error) {
@@ -77,7 +77,7 @@ const Customer = (props) => {
                 password: userData.password
             }
 
-            let res = await axios.put(`https://localhost:3006/`, body, { headers: { 'authorization': 'Bearer ' + token } });
+            let res = await axios.put(`https://moviesuiteback.herokuapp.com/`, body, { headers: { 'authorization': 'Bearer ' + token } });
 
             sendModify();
 

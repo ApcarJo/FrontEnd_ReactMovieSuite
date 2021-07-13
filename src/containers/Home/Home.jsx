@@ -98,7 +98,7 @@ const Home = (props) => {
                 genre: selectGenre.movieGenre,
                 page: selectGenre.pageNum
             }
-            let res = await axios.post(`http://localhost:3006/movies/genre`, body);
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/genre`, body);
             setSelectGenre({...selectGenre, listMoviesGenre: res.data.results, totalPagesGenre: res.data?.total_pages});
             
         } catch (error) {
@@ -115,7 +115,7 @@ const Home = (props) => {
             }
             let actor = searchMovie.movie;
 
-            let res = await axios.post(`http://localhost:3006/movies/title`, body);
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/title`, body);
             setSearchMovie({...searchMovie, findMovieList: res.data.results});
             console.log(res)
         
@@ -135,7 +135,7 @@ const Home = (props) => {
             rentStart: movieOrders.rentStartMovie,
             rentEnd: movieOrders.rentEndMovie
         }
-        let res = await axios.post(`http://localhost:3006/order`, body, {headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post(`https://moviesuiteback.herokuapp.com/order`, body, {headers:{'authorization':'Bearer ' + token}});
         } else {
             console.log("fecha incorrecta");
         }
@@ -147,7 +147,7 @@ const Home = (props) => {
                 id: value.id
             }
 
-            let res = await axios.post(`http://localhost:3006/movies/id`, body);
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/id`, body);
             
             if (res.data.title==movieOrders.title){
             ((rentMovie.showMovie=='pickMovie')&&(rentMovie.showMovie!=res.data.title)) ? rentMovie.showMovie='hideBox' : rentMovie.showMovie='pickMovie';

@@ -37,11 +37,11 @@ const Orders = (props) => {
 
             if (props.credentials.customer.admin==null){
 
-                let res = await axios.post(`http://localhost:3006/order/customerId`, body, {headers:{'authorization':'Bearer ' + token}});
+                let res = await axios.post(`https://moviesuiteback.herokuapp.com/order/customerId`, body, {headers:{'authorization':'Bearer ' + token}});
                 setViewOrders(res?.data);
 
             } else if (props.credentials.customer.admin==true) {
-                let res = await axios.get(`http://localhost:3006/order/`, {headers:{'authorization':'Bearer ' + token}});
+                let res = await axios.get(`https://moviesuiteback.herokuapp.com/order/`, {headers:{'authorization':'Bearer ' + token}});
                 setViewOrders(res?.data);
             }
            
@@ -56,7 +56,7 @@ const Orders = (props) => {
                 id: "441"
             }
 
-            let res = await axios.post(`http://localhost:3006/movies/id`, body);
+            let res = await axios.post(`https://moviesuiteback.herokuapp.com/movies/id`, body);
             setMovieOrders(res?.data);
 
         } catch (error) {
